@@ -55,14 +55,19 @@
     :root {
       --red: #D62828;
       --red-dk: #A61E1E;
-      --navy: #0A0F1E;
-      --navy-mid: #141929;
-      --navy-card: #1C2338;
-      --navy-lt: #2A3352;
+      --navy: #0B1D11;
+      --navy-mid: #112417;
+      --navy-card: #193320;
+      --navy-lt: #214529;
       --green: #1A7C3E;
       --gold: #F59E0B;
       --gray: #94A3B8;
       --light: #E2E8F0;
+      /* white section tokens */
+      --white-bg: #FFFFFF;
+      --white-card: #F2F8F4;
+      --text-dk: #0B1D11;
+      --gray-dk: #3D6B4F;
     }
 
     /* ── LAYOUT ── */
@@ -161,7 +166,7 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(10, 15, 30, .93);
+      background: rgba(11, 29, 17, .96);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(214, 40, 40, .25);
       padding: 12px 20px;
@@ -207,9 +212,10 @@
     .btn-red {
       background: var(--red);
       color: #fff;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border-radius: 8px;
-      font-size: 13px
+      font-size: 13px;
+      min-height: 44px
     }
 
     .btn-red:hover {
@@ -231,13 +237,8 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      background: linear-gradient(155deg, #0A0F1E 0%, #12172a 50%, #0A0F1E 100%);
-      position: relative;
-      overflow: hidden;
-      padding-top: 72px;
-      display: flex;
-      align-items: center
+      background: linear-gradient(155deg, #0B1D11 0%, #142B19 50%, #0B1D11 100%);
+      overflow: hidden
     }
 
     .hero::before {
@@ -247,7 +248,7 @@
       right: -180px;
       width: 560px;
       height: 560px;
-      background: radial-gradient(circle, rgba(214, 40, 40, .13) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(214, 40, 40, .15) 0%, transparent 70%);
       pointer-events: none
     }
 
@@ -258,7 +259,7 @@
       left: -80px;
       width: 380px;
       height: 380px;
-      background: radial-gradient(circle, rgba(26, 124, 62, .09) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(26, 124, 62, .15) 0%, transparent 70%);
       pointer-events: none
     }
 
@@ -268,6 +269,210 @@
       padding: 60px 0;
       text-align: center
     }
+
+    /* hero banner image — mobile: strip ở trên, desktop: cột phải */
+    .hero-banner-img {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+      z-index: 0;
+      flex-shrink: 0
+    }
+
+    .hero-banner-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, #0B1D11 100%);
+      z-index: 1
+    }
+
+    .hero-banner-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    /* on mobile hero is flex column: image on top, text below */
+    .hero {
+      display: flex !important;
+      flex-direction: column;
+      align-items: stretch;
+      padding-top: 72px !important;
+      min-height: unset !important
+    }
+
+    .hero .container { order: 2 }
+    .hero-banner-img { order: 1 }
+
+    @media(min-width:768px) {
+      .hero {
+        flex-direction: row !important;
+        align-items: center !important;
+        min-height: 100vh !important;
+        position: relative !important
+      }
+
+      .hero-banner-img {
+        position: absolute !important;
+        right: 0; top: 0; bottom: 0;
+        width: 44%;
+        height: 100% !important;
+        order: 2
+      }
+
+      .hero-banner-img::after {
+        background: linear-gradient(to right, #0B1D11 0%, transparent 40%) !important
+      }
+
+      .hero .container { order: 1; position: relative; z-index: 2 }
+      .hero-inner { text-align: left; padding-right: 46%; padding-top: 60px; padding-bottom: 60px }
+    }
+
+    /* ── LIGHT SECTIONS (white bg) ── */
+    .section-light {
+      background: var(--white-bg) !important;
+    }
+
+    .section-light .sec-tag {
+      background: rgba(11,29,17,.08);
+      color: var(--text-dk);
+      border: 1px solid rgba(11,29,17,.15)
+    }
+
+    .section-light .sec-title {
+      color: var(--text-dk)
+    }
+
+    .section-light .sec-desc {
+      color: var(--gray-dk)
+    }
+
+    .section-light .product-card {
+      background: var(--white-card);
+      border: 1.5px solid #D4E8DA
+    }
+
+    .section-light .product-name {
+      color: var(--text-dk)
+    }
+
+    .section-light .product-gender {
+      color: var(--gray-dk)
+    }
+
+    .section-light .price-note {
+      color: var(--gray-dk)
+    }
+
+    .section-light .price {
+      color: var(--text-dk)
+    }
+
+    .section-light .products-foot {
+      color: var(--gray-dk)
+    }
+
+    /* step cards on white */
+    .section-light .step-card {
+      background: var(--white-card);
+      border: 1.5px solid #D4E8DA
+    }
+
+    .section-light .step-n {
+      background: var(--navy);
+      color: #fff
+    }
+
+    .section-light .step-title {
+      color: var(--text-dk)
+    }
+
+    .section-light .step-d {
+      color: var(--gray-dk)
+    }
+
+    /* dealer section on white */
+    .section-light .pchip {
+      background: var(--white-card);
+      border: 1.5px solid #C8E0D0
+    }
+
+    .section-light .pchip-name {
+      color: var(--text-dk)
+    }
+
+    .section-light .pchip-count {
+      color: var(--green)
+    }
+
+    .section-light .pchip.active {
+      background: var(--navy);
+      border-color: var(--navy)
+    }
+
+    .section-light .pchip.active .pchip-name,
+    .section-light .pchip.active .pchip-count {
+      color: #fff
+    }
+
+    .section-light .store-card {
+      background: var(--white-card);
+      border: 1.5px solid #D4E8DA
+    }
+
+    .section-light .store-name {
+      color: var(--text-dk)
+    }
+
+    .section-light .store-addr {
+      color: var(--gray-dk)
+    }
+
+    .section-light .district-lbl {
+      color: var(--gray-dk);
+      border-bottom-color: #D4E8DA
+    }
+
+    .section-light .dealer-search {
+      background: var(--white-card);
+      border: 1.5px solid #C8E0D0;
+      color: var(--text-dk)
+    }
+
+    .section-light .dealer-search::placeholder {
+      color: #7aaa8a
+    }
+
+    /* size chart on white */
+    .section-light .size-tbl th {
+      background: var(--navy);
+      color: #fff
+    }
+
+    .section-light .size-tbl td {
+      color: var(--text-dk);
+      border-color: #D4E8DA
+    }
+
+    .section-light .size-tab {
+      color: var(--gray-dk);
+      border-color: #C8E0D0
+    }
+
+    .section-light .size-tab.active {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy)
+    }
+
+    .section-light .size-lbl {
+      color: var(--gray-dk)
+    }
+
+    /* w-cards (warranty) on dark keep as is */
 
     .campaign-pill {
       display: inline-flex;
@@ -1256,7 +1461,7 @@
 
     /* ── FORM ── */
     .form-bg {
-      background: linear-gradient(160deg, #141929 0%, #0A0F1E 100%);
+      background: linear-gradient(160deg, #112417 0%, #0B1D11 100%);
       padding: 80px 0
     }
 
@@ -1416,7 +1621,7 @@
 
     /* ── FOOTER ── */
     .footer {
-      background: #060810;
+      background: #060f09;
       border-top: 1px solid rgba(255, 255, 255, .06);
       padding: 48px 0 24px
     }
@@ -1533,6 +1738,100 @@
     .back-top:hover {
       background: var(--red)
     }
+
+    /* ── MOBILE IMPROVEMENTS ── */
+    @media(max-width:767px) {
+      /* hero text readable on mobile */
+      .hero-inner { padding: 24px 0 40px }
+
+      /* CTA buttons full-width on mobile */
+      .hero-ctas { flex-direction: column; gap: 10px }
+      .hero-ctas .btn-red,
+      .hero-ctas .btn-ghost { width: 100%; padding: 14px; font-size: 15px; min-height: 50px }
+
+      /* trust row wraps nicely */
+      .hero-trust { gap: 12px }
+
+      /* steps single column */
+      .step-card { padding: 18px 16px }
+
+      /* product cards 2 cols */
+      .product-card { min-width: 0 }
+
+      /* dealer chips overflow scroll */
+      .province-chips { flex-wrap: wrap; justify-content: flex-start; gap: 8px }
+      .pchip { min-width: 80px; padding: 10px 12px }
+
+      /* warranty 1 col on small screens */
+      .warranty-grid { grid-template-columns: 1fr }
+
+      /* form full width */
+      .form-wrap { padding: 24px 20px }
+
+      /* reduce section padding */
+      .section { padding: 56px 0 }
+      .benefits-bg, .stats-bg, .warranty-bg, .size-bg { padding: 56px 0 }
+
+      /* FAQ answer text */
+      .faq-a p { font-size: 14px }
+
+      /* size table scrollable */
+      .size-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch }
+
+      /* header logo smaller */
+      .h-logo { font-size: 15px }
+
+      /* countdown compact */
+      .cd-num { font-size: clamp(28px, 8vw, 40px) }
+
+      /* back to top position */
+      .back-top { bottom: 20px; right: 16px }
+    }
+
+    /* ── ELIGIBILITY CHECKER ── */
+    .checker-section { background: var(--white-bg); }
+    .checker-wrap { background: var(--white-card); border: 1.5px solid #D4E8DA; border-radius: 14px; padding: 20px; margin-top: 16px; }
+    .ck-step { margin-bottom: 14px; }
+    .ck-label { font-size: .8rem; font-weight: 800; color: var(--text-dk); margin-bottom: 8px; }
+    .ck-options { display: flex; flex-direction: column; gap: 7px; }
+    .ck-opt { display: flex; align-items: center; gap: 10px; background: #fff; border: 1.5px solid #C8E0D0; border-radius: 9px; padding: 11px 14px; cursor: pointer; font-size: .8rem; color: var(--text-dk); font-weight: 600; transition: all .15s; }
+    .ck-opt:hover { border-color: var(--green); }
+    .ck-opt.sel { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .ck-opt input[type=radio] { display: none; }
+    .ck-result { border-radius: 12px; padding: 20px; text-align: center; display: none; margin-top: 6px; }
+    .ck-result.show { display: block; }
+    .ck-result.ok { background: #EDFAF3; border: 2px solid #86efac; }
+    .ck-result.ok2 { background: #FFF7ED; border: 2px solid #fcd34d; }
+    .ck-result.no { background: #FEF2F2; border: 2px solid #fca5a5; }
+    .ck-amt { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 900; line-height: 1; }
+    .ck-result.ok .ck-amt { color: #15803d; }
+    .ck-result.ok2 .ck-amt { color: #b45309; }
+    .ck-result.no .ck-amt { color: #b91c1c; }
+    .ck-msg { font-size: .76rem; color: #555; margin-top: 7px; line-height: 1.55; }
+    .ck-cta { display: inline-block; background: var(--red); color: #fff; font-size: .78rem; font-weight: 700; padding: 10px 22px; border-radius: 7px; margin-top: 12px; cursor: pointer; border: none; text-decoration: none; }
+    @media(min-width:768px) {
+      .ck-options { flex-direction: row; flex-wrap: wrap; }
+      .ck-opt { flex: 1; min-width: 200px; }
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testi-section { background: var(--navy-mid); padding: 64px 0; }
+    .testi-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-top: 20px; }
+    .testi-scroll::-webkit-scrollbar { display: none; }
+    .testi-card { flex-shrink: 0; width: 240px; background: var(--navy-card); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; overflow: hidden; }
+    .testi-img-row { display: flex; height: 130px; }
+    .testi-before, .testi-after { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 2.4rem; }
+    .testi-before { background: #2a1a1a; border-right: 2px solid var(--navy); }
+    .testi-after { background: #0a2a16; }
+    .testi-ab-bar { display: flex; }
+    .testi-ab-bar span { flex: 1; text-align: center; font-size: .55rem; font-weight: 700; padding: 4px; }
+    .tbl-b { background: rgba(214,40,40,.2); color: #ff9999; }
+    .tbl-a { background: rgba(26,124,62,.25); color: #6ee7a0; }
+    .testi-body { padding: 14px; }
+    .testi-stars { color: var(--gold); font-size: .85rem; margin-bottom: 6px; }
+    .testi-quote { font-size: .74rem; color: rgba(255,255,255,.8); line-height: 1.6; font-style: italic; }
+    .testi-name { font-size: .68rem; color: var(--gray); margin-top: 8px; font-weight: 700; }
+    .testi-hint { font-size: .65rem; color: rgba(255,255,255,.3); margin-top: 10px; text-align: center; }
   </style>
 </head>
 
@@ -1548,6 +1847,9 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-banner-img">
+      <img src="https://lottosports.vn/wp-content/uploads/2026/04/1360.webp" alt="Thu Cũ Đổi Mới Lotto 2026" loading="eager">
+    </div>
     <div class="container">
       <div class="hero-inner">
         <div class="campaign-pill">
@@ -1621,7 +1923,7 @@
   </div>
 
   <!-- STEPS -->
-  <section class="section" id="cach-thuc">
+  <section class="section section-light" id="cach-thuc">
     <div class="container">
       <div class="text-center reveal">
         <span class="sec-tag">Cách thức</span>
@@ -1651,6 +1953,49 @@
           <div class="step-t">Nhận giày Lotto mới</div>
           <p class="step-d">Chọn mẫu yêu thích trong danh sách áp dụng, thanh toán phần chênh lệch và về nhà với đôi
             giày xịn!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY CHECKER -->
+  <section class="section section-light checker-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Công cụ tra cứu</span>
+        <h2 class="sec-title">Giày Của Bạn Có Đủ<br>Điều Kiện Đổi Không?</h2>
+        <p class="sec-desc">Chọn tình trạng giày — xem ngay mức hỗ trợ bạn được nhận</p>
+      </div>
+      <div class="checker-wrap reveal">
+        <div class="ck-step">
+          <div class="ck-label">1. Tình trạng đế giày của bạn?</div>
+          <div class="ck-options" id="ck-q1">
+            <label class="ck-opt" onclick="ckSelect('q1','worn',this)"><input type="radio" name="q1">👟 Đế mòn rõ, chạy dễ trơn trượt</label>
+            <label class="ck-opt" onclick="ckSelect('q1','torn',this)"><input type="radio" name="q1">💥 Rách mũi, tách đế hoặc bung keo</label>
+            <label class="ck-opt" onclick="ckSelect('q1','new',this)"><input type="radio" name="q1">✨ Giày vẫn còn tốt / gần như mới</label>
+          </div>
+        </div>
+        <div class="ck-step" id="ck-q2-wrap" style="display:none">
+          <div class="ck-label">2. Loại giày?</div>
+          <div class="ck-options" id="ck-q2">
+            <label class="ck-opt" onclick="ckSelect('q2','sport',this)"><input type="radio" name="q2">🏃 Thể thao / chạy bộ / gym</label>
+            <label class="ck-opt" onclick="ckSelect('q2','sport',this)"><input type="radio" name="q2">🎾 Tennis / Pickleball</label>
+            <label class="ck-opt" onclick="ckSelect('q2','notsport',this)"><input type="radio" name="q2">🦺 Bảo hộ lao động / dép</label>
+          </div>
+        </div>
+        <div class="ck-result ok" id="ck-r700">
+          <div class="ck-amt">−700.000₫</div>
+          <div class="ck-msg">✅ Giày của bạn đủ điều kiện nhận mức hỗ trợ cao nhất!<br>Mang đến đại lý để đổi ngay hôm nay.</div>
+          <a href="#dang-ky" class="ck-cta">🎯 Đăng Ký Đổi Giày</a>
+        </div>
+        <div class="ck-result ok2" id="ck-r500">
+          <div class="ck-amt">−500.000₫</div>
+          <div class="ck-msg">✅ Giày đủ điều kiện đổi với mức hỗ trợ 500K.<br>Mang đến đại lý — nhân viên kiểm tra và xác nhận ngay tại chỗ.</div>
+          <a href="#dang-ky" class="ck-cta">🎯 Đăng Ký Đổi Giày</a>
+        </div>
+        <div class="ck-result no" id="ck-rno">
+          <div class="ck-amt">Không áp dụng</div>
+          <div class="ck-msg">❌ Giày này không thuộc danh mục áp dụng chương trình.<br>Liên hệ đại lý để được tư vấn thêm.</div>
         </div>
       </div>
     </div>
@@ -1695,20 +2040,20 @@
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-n" data-target="700">0</div>
-          <div class="stat-l">K hỗ trợ tối đa</div>
+          <div class="stat-n">700K</div>
+          <div class="stat-l">hỗ trợ tối đa</div>
         </div>
         <div class="stat-item">
           <div class="stat-n" data-target="50">0</div>
           <div class="stat-l">+ năm thương hiệu Ý</div>
         </div>
         <div class="stat-item">
-          <div class="stat-n" data-target="100">0</div>
+          <div class="stat-n" data-target="200">0</div>
           <div class="stat-l">+ điểm bán toàn quốc</div>
         </div>
         <div class="stat-item">
-          <div class="stat-n" data-target="6">0</div>
-          <div class="stat-l">mẫu giày áp dụng</div>
+          <div class="stat-n" style="font-size:1.1rem;line-height:1.3">Lotto &amp; Nirox</div>
+          <div class="stat-l">áp dụng tất cả sản phẩm</div>
         </div>
       </div>
     </div>
@@ -1717,7 +2062,7 @@
   <div class="grad-divider"></div>
 
   <!-- PRODUCTS -->
-  <section class="section">
+  <section class="section section-light">
     <div class="container">
       <div class="text-center reveal">
         <span class="sec-tag">Sản phẩm</span>
@@ -1840,8 +2185,67 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section class="testi-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Khách hàng nói gì</span>
+        <h2 class="sec-title">Trước &amp; Sau Khi Đổi Giày</h2>
+        <p class="sec-desc" style="color:var(--gray)">Cảm nhận thật từ khách hàng tại điểm bán</p>
+      </div>
+      <div class="testi-scroll">
+        <div class="testi-card">
+          <div class="testi-img-row">
+            <div class="testi-before">👟</div>
+            <div class="testi-after">✨</div>
+          </div>
+          <div class="testi-ab-bar">
+            <span class="tbl-b">TRƯỚC</span>
+            <span class="tbl-a">SAU</span>
+          </div>
+          <div class="testi-body">
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-quote">"Tưởng phải mua giày mới giá đầy đủ, ai ngờ đổi được ngay tại đại lý, tiết kiệm cả 700K!"</div>
+            <div class="testi-name">Anh Minh · Đà Nẵng</div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-img-row">
+            <div class="testi-before">👟</div>
+            <div class="testi-after">✨</div>
+          </div>
+          <div class="testi-ab-bar">
+            <span class="tbl-b">TRƯỚC</span>
+            <span class="tbl-a">SAU</span>
+          </div>
+          <div class="testi-body">
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-quote">"Giày tennis cũ bị rách mũi, nhân viên kiểm tra xong đổi luôn đôi Mirage 700 mới. Nhanh lắm!"</div>
+            <div class="testi-name">Chị Lan · TP.HCM</div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-img-row">
+            <div class="testi-before">👟</div>
+            <div class="testi-after">✨</div>
+          </div>
+          <div class="testi-ab-bar">
+            <span class="tbl-b">TRƯỚC</span>
+            <span class="tbl-a">SAU</span>
+          </div>
+          <div class="testi-body">
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-quote">"Đế mòn rõ, mang đến được hỗ trợ 700K. Bù thêm chút là có đôi Raptor 300 xịn sò!"</div>
+            <div class="testi-name">Anh Tuấn · Bình Định</div>
+          </div>
+        </div>
+      </div>
+      <p class="testi-hint">← Vuốt để xem thêm · Ảnh thật từ điểm bán sẽ cập nhật hàng tuần →</p>
+    </div>
+  </section>
+
   <!-- FAQ -->
-  <section class="section">
+  <section class="section section-light">
     <div class="container">
       <div class="text-center reveal">
         <span class="sec-tag">Câu hỏi thường gặp</span>
@@ -1905,7 +2309,7 @@
   <div class="grad-divider"></div>
 
   <!-- SIZE CHART -->
-  <section class="size-bg">
+  <section class="size-bg section-light">
     <div class="container">
       <div class="text-center reveal">
         <span class="sec-tag">Kích cỡ</span>
@@ -1985,7 +2389,7 @@
   </section>
 
   <!-- DEALERS -->
-  <section class="section">
+  <section class="section section-light">
     <div class="container">
       <div class="text-center reveal">
         <span class="sec-tag">Hệ thống phân phối</span>
@@ -2353,7 +2757,7 @@
     }
 
     // Countdown (target: 2026-08-05 23:59:59)
-    const endDate = new Date('2026-08-05T23:59:59');
+    const endDate = new Date('2026-08-05T23:59:59+07:00');
     function tick() {
       const diff = Math.max(0, endDate - new Date());
       const d = Math.floor(diff / 86400000);
@@ -2401,6 +2805,35 @@
       });
     }, { threshold: 0.5 });
     statEls.forEach(el => statObs.observe(el));
+
+    // Eligibility checker
+    var ckState = {};
+    function ckSelect(q, val, el) {
+      document.querySelectorAll('#ck-' + q + ' .ck-opt').forEach(o => o.classList.remove('sel'));
+      el.classList.add('sel');
+      ckState[q] = val;
+      ['ck-r700','ck-r500','ck-rno'].forEach(id => { const r = document.getElementById(id); if(r) r.classList.remove('show'); });
+      if (q === 'q1') {
+        const q2w = document.getElementById('ck-q2-wrap');
+        if (val === 'new') {
+          if (q2w) q2w.style.display = 'none';
+          document.getElementById('ck-rno').classList.add('show');
+        } else {
+          if (q2w) q2w.style.display = 'block';
+          document.querySelectorAll('#ck-q2 .ck-opt').forEach(o => o.classList.remove('sel'));
+          ckState.q2 = null;
+        }
+      }
+      if (q === 'q2') {
+        if (val === 'notsport') {
+          document.getElementById('ck-rno').classList.add('show');
+        } else if (ckState.q1 === 'worn') {
+          document.getElementById('ck-r700').classList.add('show');
+        } else {
+          document.getElementById('ck-r500').classList.add('show');
+        }
+      }
+    }
 
     // FAQ
     function toggleFaq(btn) {
