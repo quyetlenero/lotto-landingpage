@@ -1,1102 +1,2482 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Thu Cũ Đổi Mới – Lên đời giày thể thao Ý Lotto chính hãng. Hỗ trợ lên tới 700K khi đổi giày cũ. Áp dụng mọi thương hiệu. 03/07–05/08/2026.">
-<title>Thu Cũ Đổi Mới | Lotto Sports – Hỗ trợ lên tới 700K</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* ── RESET ── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Be Vietnam Pro',sans-serif;background:#0A0F1E;color:#fff;line-height:1.6;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:800}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;height:auto}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Thu Cũ Đổi Mới – Lên đời giày thể thao Ý Lotto chính hãng. Hỗ trợ lên tới 700K khi đổi giày cũ. Áp dụng mọi thương hiệu. 03/07–05/08/2026.">
+  <title>Thu Cũ Đổi Mới | Lotto Sports – Hỗ trợ lên tới 700K</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ── RESET ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── VARS ── */
-:root{
-  --red:#D62828;--red-dk:#A61E1E;
-  --navy:#0A0F1E;--navy-mid:#141929;--navy-card:#1C2338;--navy-lt:#2A3352;
-  --green:#1A7C3E;--gold:#F59E0B;
-  --gray:#94A3B8;--light:#E2E8F0;
-}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* ── LAYOUT ── */
-.container{max-width:480px;margin:0 auto;padding:0 20px}
-@media(min-width:768px){.container{max-width:960px}}
-.text-center{text-align:center}
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: #0A0F1E;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden
+    }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(214,40,40,.6)}70%{box-shadow:0 0 0 18px rgba(214,40,40,0)}100%{box-shadow:0 0 0 0 rgba(214,40,40,0)}}
-@keyframes flip{0%{transform:rotateX(90deg);opacity:0}100%{transform:rotateX(0);opacity:1}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800
+    }
 
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .65s ease,transform .65s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+    a {
+      text-decoration: none;
+      color: inherit
+    }
 
-/* ── STICKY HEADER ── */
-.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,15,30,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(214,40,40,.25);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .3s}
-.header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.55)}
-.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;display:flex;align-items:center;gap:8px}
-.h-logo .badge{background:var(--red);color:#fff;padding:3px 10px;border-radius:4px;font-size:13px;letter-spacing:1px}
-.btn{display:inline-block;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.6px;border:none;cursor:pointer;transition:all .2s ease}
-.btn-red{background:var(--red);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px}
-.btn-red:hover{background:var(--red-dk);transform:translateY(-2px);box-shadow:0 8px 20px rgba(214,40,40,.4)}
-.btn-red.lg{font-size:16px;padding:16px 38px;border-radius:10px;letter-spacing:1px}
-.btn-red:active{transform:translateY(0)}
+    img {
+      max-width: 100%;
+      height: auto
+    }
 
-/* ── HERO ── */
-.hero{min-height:100vh;background:linear-gradient(155deg,#0A0F1E 0%,#12172a 50%,#0A0F1E 100%);position:relative;overflow:hidden;padding-top:72px;display:flex;align-items:center}
-.hero::before{content:'';position:absolute;top:-180px;right:-180px;width:560px;height:560px;background:radial-gradient(circle,rgba(214,40,40,.13) 0%,transparent 70%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-100px;left:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(26,124,62,.09) 0%,transparent 70%);pointer-events:none}
-.hero-inner{position:relative;z-index:1;padding:60px 0;text-align:center}
+    /* ── VARS ── */
+    :root {
+      --red: #D62828;
+      --red-dk: #A61E1E;
+      --navy: #0A0F1E;
+      --navy-mid: #141929;
+      --navy-card: #1C2338;
+      --navy-lt: #2A3352;
+      --green: #1A7C3E;
+      --gold: #F59E0B;
+      --gray: #94A3B8;
+      --light: #E2E8F0;
+    }
 
-.campaign-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(214,40,40,.12);border:1px solid rgba(214,40,40,.35);color:#ff7070;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:20px;animation:fadeUp .55s ease both}
-.campaign-pill .date-chip{background:var(--gold);color:#1a1a2e;font-size:10px;font-weight:800;padding:2px 9px;border-radius:20px;letter-spacing:.5px}
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
 
-.hero-title{font-size:clamp(52px,13vw,88px);font-weight:900;line-height:.92;letter-spacing:-2px;margin-bottom:14px;animation:fadeUp .55s .1s ease both}
-.hero-title .t1{color:#fff;display:block}
-.hero-title .t2{color:var(--red);display:block}
+    @media(min-width:768px) {
+      .container {
+        max-width: 960px
+      }
+    }
 
-.hero-sub{font-size:clamp(14px,3.5vw,18px);color:var(--gray);margin-bottom:8px;animation:fadeUp .55s .18s ease both}
-.hero-sub strong{color:#fff}
-.flag{display:inline-flex;gap:3px;margin-left:6px;vertical-align:middle}
-.flag span{width:6px;height:15px;border-radius:1px;display:inline-block}
-.flag .g{background:#009246}.flag .w{background:#fff}.flag .r{background:#ce2b37}
+    .text-center {
+      text-align: center
+    }
 
-.hero-note{font-size:13px;color:#64748B;margin-bottom:32px;animation:fadeUp .55s .22s ease both}
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
 
-.value-box{display:inline-flex;flex-direction:column;align-items:center;background:rgba(214,40,40,.1);border:2px solid rgba(214,40,40,.5);border-radius:20px;padding:22px 44px;margin-bottom:34px;animation:fadeUp .55s .28s ease both,pulseRing 2.5s 2s infinite}
-.value-lbl{font-size:12px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
-.value-amt{font-family:'Montserrat',sans-serif;font-size:clamp(56px,14vw,76px);font-weight:900;line-height:1;background:linear-gradient(135deg,#F59E0B,#FCD34D,#F59E0B);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite}
-.value-sub{font-size:14px;color:rgba(255,255,255,.8);font-weight:600}
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 
-.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:36px;animation:fadeUp .55s .34s ease both}
-.btn-ghost{background:transparent;color:var(--gray);font-size:14px;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:4px}
+    @keyframes shimmer {
+      0% {
+        background-position: -200% center
+      }
 
-.hero-trust{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;animation:fadeUp .55s .4s ease both}
-.trust-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--gray)}
-.trust-ico{width:28px;height:28px;background:rgba(26,124,62,.18);border:1px solid rgba(26,124,62,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+      100% {
+        background-position: 200% center
+      }
+    }
 
-/* ── COUNTDOWN ── */
-.countdown{background:linear-gradient(135deg,var(--red) 0%,#8B0000 100%);padding:22px 0;text-align:center}
-.cd-label{font-size:12px;color:rgba(255,255,255,.8);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
-.cd-timer{display:flex;justify-content:center;align-items:center;gap:10px}
-.cd-block{display:flex;flex-direction:column;align-items:center}
-.cd-num{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.2);border-radius:10px;width:66px;height:66px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:30px;font-weight:900;color:#fff}
-.cd-num.flip{animation:flip .3s ease}
-.cd-unit{font-size:9px;color:rgba(255,255,255,.65);margin-top:5px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
-.cd-sep{font-size:26px;font-weight:900;color:rgba(255,255,255,.45);margin-bottom:16px}
+    @keyframes pulseRing {
+      0% {
+        box-shadow: 0 0 0 0 rgba(214, 40, 40, .6)
+      }
 
-/* ── SECTION BASE ── */
-.section{padding:80px 0}
-.sec-tag{display:inline-block;background:rgba(214,40,40,.13);color:var(--red);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:10px}
-.sec-title{font-size:clamp(26px,6vw,38px);font-weight:900;margin-bottom:10px;line-height:1.1}
-.sec-desc{color:var(--gray);font-size:14px;max-width:460px;margin:0 auto 44px}
-.grad-divider{height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent)}
+      70% {
+        box-shadow: 0 0 0 18px rgba(214, 40, 40, 0)
+      }
 
-/* ── STEPS ── */
-.steps-grid{display:grid;grid-template-columns:1fr;gap:18px}
-@media(min-width:768px){.steps-grid{grid-template-columns:repeat(3,1fr)}}
-.step-card{background:var(--navy-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px;text-align:center;position:relative;transition:transform .3s,border-color .3s}
-.step-card:hover{transform:translateY(-6px);border-color:rgba(214,40,40,.4)}
-.step-n{display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;background:var(--red);border-radius:50%;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;margin-bottom:14px}
-.step-ico{font-size:34px;margin-bottom:10px}
-.step-t{font-size:16px;font-weight:700;margin-bottom:8px}
-.step-d{font-size:13px;color:var(--gray);line-height:1.75}
-.step-arr{display:none}
-@media(min-width:768px){.step-arr{display:flex;position:absolute;right:-22px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--red);z-index:2;pointer-events:none}}
+      100% {
+        box-shadow: 0 0 0 0 rgba(214, 40, 40, 0)
+      }
+    }
 
-/* ── BENEFITS ── */
-.benefits-bg{background:var(--navy-mid);padding:80px 0}
-.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(min-width:768px){.benefits-grid{grid-template-columns:repeat(4,1fr)}}
-.benefit-card{background:var(--navy-card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px 16px;text-align:center;transition:all .3s}
-.benefit-card:hover{border-color:rgba(26,124,62,.4);transform:translateY(-4px)}
-.benefit-ico{font-size:30px;margin-bottom:10px}
-.benefit-t{font-size:13px;font-weight:700;margin-bottom:6px}
-.benefit-d{font-size:11px;color:var(--gray);line-height:1.65}
+    @keyframes flip {
+      0% {
+        transform: rotateX(90deg);
+        opacity: 0
+      }
 
-/* ── STATS ── */
-.stats-bg{background:linear-gradient(135deg,var(--green) 0%,#0c3320 100%);padding:60px 0}
-.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
-.stat-item{text-align:center}
-.stat-n{font-family:'Montserrat',sans-serif;font-size:clamp(34px,8vw,50px);font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px}
-.stat-l{font-size:13px;color:rgba(255,255,255,.8);font-weight:600}
+      100% {
+        transform: rotateX(0);
+        opacity: 1
+      }
+    }
 
-/* ── PRODUCTS ── */
-.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(min-width:768px){.products-grid{grid-template-columns:repeat(3,1fr)}}
-.product-card{background:var(--navy-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;transition:all .3s;cursor:default}
-.product-card:hover{border-color:var(--red);transform:translateY(-6px);box-shadow:0 20px 40px rgba(214,40,40,.18)}
-.product-img{background:linear-gradient(135deg,#1C2338,#2A3352);height:150px;display:flex;align-items:center;justify-content:center;font-size:54px;position:relative}
-.p-badge{position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase}
-.p-num{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.1);color:var(--gray);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px}
-.product-body{padding:14px}
-.product-name{font-size:15px;font-weight:700;margin-bottom:3px}
-.product-gender{font-size:11px;color:var(--gray);margin-bottom:9px}
-.price-row{display:flex;align-items:flex-end;gap:8px}
-.price-note{font-size:9px;color:var(--gray)}
-.price{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:var(--red)}
-.price-tag{font-size:10px;background:rgba(26,124,62,.2);color:#4ade80;border:1px solid rgba(26,124,62,.3);padding:2px 8px;border-radius:100px;font-weight:600}
-.products-foot{text-align:center;margin-top:22px;font-size:12px;color:var(--gray);font-style:italic}
+    @keyframes float {
 
-/* ── WARRANTY ── */
-.warranty-bg{background:var(--navy-mid);padding:72px 0}
-.warranty-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px;margin:0 auto}
-.w-card{background:var(--navy-card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px;text-align:center}
-.w-ico{font-size:38px;margin-bottom:10px}
-.w-period{font-family:'Montserrat',sans-serif;font-size:30px;font-weight:900;color:var(--gold);margin-bottom:4px}
-.w-label{font-size:13px;color:var(--gray)}
+      0%,
+      100% {
+        transform: translateY(0)
+      }
 
-/* ── FAQ ── */
-.faq-list{max-width:680px;margin:0 auto}
-.faq-item{background:var(--navy-card);border:1px solid rgba(255,255,255,.06);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:border-color .3s}
-.faq-item.open{border-color:rgba(214,40,40,.4)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:17px 20px;cursor:pointer;font-weight:700;font-size:14px;color:#fff;gap:12px;user-select:none}
-.faq-q:hover{color:var(--red)}
-.faq-ico{width:26px;height:26px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;transition:transform .3s;line-height:1}
-.faq-item.open .faq-ico{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 20px}
-.faq-a.open{max-height:260px;padding:0 20px 17px}
-.faq-a p{color:var(--gray);font-size:13px;line-height:1.85}
+      50% {
+        transform: translateY(-8px)
+      }
+    }
 
-/* ── SIZE CHART ── */
-.size-bg{background:var(--navy-mid);padding:80px 0}
-.size-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:24px}
-.size-tab{padding:8px 26px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--gray);transition:all .2s;font-family:'Be Vietnam Pro',sans-serif}
-.size-tab.active{background:var(--red);color:#fff;border-color:var(--red)}
-.size-wrap{overflow-x:auto;border-radius:12px;background:var(--navy-card);border:1px solid rgba(255,255,255,.06)}
-.size-tbl{width:100%;border-collapse:collapse;min-width:380px}
-.size-tbl th{background:var(--red);color:#fff;font-weight:700;font-size:11px;text-transform:uppercase;padding:11px 14px;text-align:center}
-.size-tbl td{text-align:center;padding:10px 14px;font-size:13px;color:var(--light);border-bottom:1px solid rgba(255,255,255,.04)}
-.size-tbl tr:last-child td{border-bottom:none}
-.size-tbl tr:hover td{background:rgba(255,255,255,.025)}
-.size-lbl{background:rgba(214,40,40,.1)!important;color:var(--red)!important;font-weight:700!important}
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .65s ease, transform .65s ease
+    }
 
-/* ── DEALERS ── */
-.search-wrap{display:flex;align-items:center;background:var(--navy-card);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:0 16px;max-width:520px;margin:0 auto 20px}
-.search-ico{color:var(--gray);font-size:17px;margin-right:10px}
-.search-input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:14px;font-family:'Be Vietnam Pro',sans-serif;padding:14px 0}
-.search-input::placeholder{color:var(--gray)}
-/* Province chips — horizontal cards with count on top */
-.province-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:24px}
-.pchip{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:88px;padding:12px 14px;border-radius:12px;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:var(--navy-card);transition:all .2s;font-family:'Be Vietnam Pro',sans-serif}
-.pchip:hover{border-color:rgba(214,40,40,.5);transform:translateY(-2px)}
-.pchip.active{border-color:var(--red);background:rgba(214,40,40,.12);transform:translateY(-2px);box-shadow:0 6px 20px rgba(214,40,40,.2)}
-.pchip-count{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:900;color:var(--gold);line-height:1;order:2}
-.pchip.active .pchip-count{color:rgba(255,255,255,.75)}
-.pchip-name{font-size:11px;font-weight:700;color:var(--gray);text-align:center;line-height:1.3;order:1}
-.pchip.active .pchip-name{color:rgba(255,255,255,.9)}
-/* Store panel — shown below chips when province selected */
-.store-panel{max-width:720px;margin:0 auto;display:none}
-.store-panel.show{display:block}
-.store-panel-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07)}
-.store-panel-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px}
-.store-panel-sub{font-size:11px;color:var(--gray);margin-left:auto}
-/* District label */
-.district-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:8px;padding-left:2px}
-/* Store cards */
-.store-list{display:flex;flex-direction:column;gap:8px}
-.store-card{display:flex;align-items:center;gap:10px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);transition:all .2s}
-.store-card:hover{border-color:rgba(214,40,40,.35);background:rgba(214,40,40,.04)}
-.store-ico{width:34px;height:34px;background:rgba(214,40,40,.13);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.store-info{flex:1;min-width:0}
-.store-name{font-weight:700;font-size:13px;margin-bottom:2px}
-.store-addr{font-size:11px;color:var(--gray);line-height:1.5}
-.map-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:5px;background:rgba(26,124,62,.15);border:1px solid rgba(26,124,62,.3);color:#4ade80;font-size:11px;font-weight:700;padding:6px 11px;border-radius:8px;white-space:nowrap;text-decoration:none;transition:all .2s;font-family:'Be Vietnam Pro',sans-serif}
-.map-btn:hover{background:rgba(26,124,62,.3);border-color:#4ade80;transform:translateY(-1px)}
-.no-results{text-align:center;color:var(--gray);padding:36px;display:none}
-.chips-loading{color:var(--gray);font-size:13px;padding:8px 0;font-style:italic}
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
 
-/* ── FORM ── */
-.form-bg{background:linear-gradient(160deg,#141929 0%,#0A0F1E 100%);padding:80px 0}
-.form-wrap{max-width:480px;margin:0 auto;background:var(--navy-card);border:1px solid rgba(214,40,40,.28);border-radius:20px;padding:34px 28px}
-.form-hdr{text-align:center;margin-bottom:26px}
-.form-title{font-size:21px;font-weight:900;margin-bottom:6px}
-.form-desc{font-size:14px;color:var(--gray)}
-.form-group{margin-bottom:15px}
-.form-label{display:block;font-size:13px;font-weight:600;color:var(--light);margin-bottom:5px}
-.form-input,.form-select{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:10px;padding:13px 15px;color:#fff;font-size:14px;font-family:'Be Vietnam Pro',sans-serif;outline:none;transition:all .2s}
-.form-input:focus,.form-select:focus{border-color:var(--red);background:rgba(214,40,40,.05);box-shadow:0 0 0 3px rgba(214,40,40,.1)}
-.form-input.err{border-color:#f87171}
-.form-input.ok{border-color:#4ade80}
-.form-input::placeholder{color:rgba(148,163,184,.55)}
-.form-select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%2394A3B8' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
-.form-select option{background:#1C2338}
-.err-msg{font-size:12px;color:#f87171;margin-top:4px;display:none}
-.err-msg.show{display:block}
-.form-btn{width:100%;background:var(--red);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;padding:15px;border-radius:10px;border:none;cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:all .2s;margin-top:6px}
-.form-btn:hover{background:var(--red-dk);transform:translateY(-2px);box-shadow:0 12px 28px rgba(214,40,40,.4)}
-.form-btn:disabled{opacity:.55;cursor:not-allowed;transform:none!important}
-.form-note{text-align:center;font-size:12px;color:var(--gray);margin-top:10px;font-style:italic}
-.form-success{text-align:center;display:none;padding:10px 0}
-.suc-ico{font-size:58px;margin-bottom:14px}
-.suc-title{font-size:22px;font-weight:900;color:#4ade80;margin-bottom:8px}
-.suc-msg{font-size:14px;color:var(--gray);line-height:1.75}
+    /* ── STICKY HEADER ── */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 15, 30, .93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(214, 40, 40, .25);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: box-shadow .3s
+    }
 
-/* ── FOOTER ── */
-.footer{background:#060810;border-top:1px solid rgba(255,255,255,.06);padding:48px 0 24px}
-.footer-inner{display:grid;grid-template-columns:1fr;gap:30px;margin-bottom:28px}
-@media(min-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}
-.f-logo{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--gray);margin-bottom:8px}
-.f-logo span{background:var(--red);color:#fff;padding:2px 8px;border-radius:4px;margin-right:5px}
-.f-company{font-size:15px;font-weight:700;color:#fff;margin-bottom:12px}
-.f-about{font-size:13px;color:var(--gray);line-height:1.75}
-.contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px;font-size:13px;color:var(--gray)}
-.contact-item a:hover{color:var(--red)}
-.f-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;text-align:center;font-size:12px;color:rgba(148,163,184,.5)}
+    .header.scrolled {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .55)
+    }
 
-/* ── FLOATING ── */
-.phone-float{position:fixed;bottom:28px;left:20px;z-index:999;width:56px;height:56px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 20px rgba(245,158,11,.5);animation:pulseRing 2.5s ease-in-out infinite;cursor:pointer}
-.back-top{position:fixed;bottom:28px;right:20px;z-index:999;width:44px;height:44px;background:var(--navy-lt);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;border:none;color:#fff}
-.back-top.visible{opacity:1;transform:translateY(0)}
-.back-top:hover{background:var(--red)}
-</style>
+    .h-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .h-logo .badge {
+      background: var(--red);
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      letter-spacing: 1px
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      border: none;
+      cursor: pointer;
+      transition: all .2s ease
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px
+    }
+
+    .btn-red:hover {
+      background: var(--red-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(214, 40, 40, .4)
+    }
+
+    .btn-red.lg {
+      font-size: 16px;
+      padding: 16px 38px;
+      border-radius: 10px;
+      letter-spacing: 1px
+    }
+
+    .btn-red:active {
+      transform: translateY(0)
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(155deg, #0A0F1E 0%, #12172a 50%, #0A0F1E 100%);
+      position: relative;
+      overflow: hidden;
+      padding-top: 72px;
+      display: flex;
+      align-items: center
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -180px;
+      right: -180px;
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(circle, rgba(214, 40, 40, .13) 0%, transparent 70%);
+      pointer-events: none
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -80px;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(26, 124, 62, .09) 0%, transparent 70%);
+      pointer-events: none
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 60px 0;
+      text-align: center
+    }
+
+    .campaign-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(214, 40, 40, .12);
+      border: 1px solid rgba(214, 40, 40, .35);
+      color: #ff7070;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      animation: fadeUp .55s ease both
+    }
+
+    .campaign-pill .date-chip {
+      background: var(--gold);
+      color: #1a1a2e;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 20px;
+      letter-spacing: .5px
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 13vw, 88px);
+      font-weight: 900;
+      line-height: .92;
+      letter-spacing: -2px;
+      margin-bottom: 14px;
+      animation: fadeUp .55s .1s ease both
+    }
+
+    .hero-title .t1 {
+      color: #fff;
+      display: block
+    }
+
+    .hero-title .t2 {
+      color: var(--red);
+      display: block
+    }
+
+    .hero-sub {
+      font-size: clamp(14px, 3.5vw, 18px);
+      color: var(--gray);
+      margin-bottom: 8px;
+      animation: fadeUp .55s .18s ease both
+    }
+
+    .hero-sub strong {
+      color: #fff
+    }
+
+    .flag {
+      display: inline-flex;
+      gap: 3px;
+      margin-left: 6px;
+      vertical-align: middle
+    }
+
+    .flag span {
+      width: 6px;
+      height: 15px;
+      border-radius: 1px;
+      display: inline-block
+    }
+
+    .flag .g {
+      background: #009246
+    }
+
+    .flag .w {
+      background: #fff
+    }
+
+    .flag .r {
+      background: #ce2b37
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: #64748B;
+      margin-bottom: 32px;
+      animation: fadeUp .55s .22s ease both
+    }
+
+    .value-box {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(214, 40, 40, .1);
+      border: 2px solid rgba(214, 40, 40, .5);
+      border-radius: 20px;
+      padding: 22px 44px;
+      margin-bottom: 34px;
+      animation: fadeUp .55s .28s ease both, pulseRing 2.5s 2s infinite
+    }
+
+    .value-lbl {
+      font-size: 12px;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px
+    }
+
+    .value-amt {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(56px, 14vw, 76px);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #F59E0B, #FCD34D, #F59E0B);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite
+    }
+
+    .value-sub {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .8);
+      font-weight: 600
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      animation: fadeUp .55s .34s ease both
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--gray);
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      padding: 4px
+    }
+
+    .hero-trust {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      animation: fadeUp .55s .4s ease both
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--gray)
+    }
+
+    .trust-ico {
+      width: 28px;
+      height: 28px;
+      background: rgba(26, 124, 62, .18);
+      border: 1px solid rgba(26, 124, 62, .35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown {
+      background: linear-gradient(135deg, var(--red) 0%, #8B0000 100%);
+      padding: 22px 0;
+      text-align: center
+    }
+
+    .cd-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .8);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 14px
+    }
+
+    .cd-timer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px
+    }
+
+    .cd-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .cd-num {
+      background: rgba(0, 0, 0, .28);
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 10px;
+      width: 66px;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: #fff
+    }
+
+    .cd-num.flip {
+      animation: flip .3s ease
+    }
+
+    .cd-unit {
+      font-size: 9px;
+      color: rgba(255, 255, 255, .65);
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700
+    }
+
+    .cd-sep {
+      font-size: 26px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, .45);
+      margin-bottom: 16px
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 80px 0
+    }
+
+    .sec-tag {
+      display: inline-block;
+      background: rgba(214, 40, 40, .13);
+      color: var(--red);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 10px
+    }
+
+    .sec-title {
+      font-size: clamp(26px, 6vw, 38px);
+      font-weight: 900;
+      margin-bottom: 10px;
+      line-height: 1.1
+    }
+
+    .sec-desc {
+      color: var(--gray);
+      font-size: 14px;
+      max-width: 460px;
+      margin: 0 auto 44px
+    }
+
+    .grad-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent)
+    }
+
+    /* ── STEPS ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px
+    }
+
+    @media(min-width:768px) {
+      .steps-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    .step-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      position: relative;
+      transition: transform .3s, border-color .3s
+    }
+
+    .step-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(214, 40, 40, .4)
+    }
+
+    .step-n {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: var(--red);
+      border-radius: 50%;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 14px
+    }
+
+    .step-ico {
+      font-size: 34px;
+      margin-bottom: 10px
+    }
+
+    .step-t {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px
+    }
+
+    .step-d {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.75
+    }
+
+    .step-arr {
+      display: none
+    }
+
+    @media(min-width:768px) {
+      .step-arr {
+        display: flex;
+        position: absolute;
+        right: -22px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 22px;
+        color: var(--red);
+        z-index: 2;
+        pointer-events: none
+      }
+    }
+
+    /* ── BENEFITS ── */
+    .benefits-bg {
+      background: var(--navy-mid);
+      padding: 80px 0
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px
+    }
+
+    @media(min-width:768px) {
+      .benefits-grid {
+        grid-template-columns: repeat(4, 1fr)
+      }
+    }
+
+    .benefit-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 14px;
+      padding: 24px 16px;
+      text-align: center;
+      transition: all .3s
+    }
+
+    .benefit-card:hover {
+      border-color: rgba(26, 124, 62, .4);
+      transform: translateY(-4px)
+    }
+
+    .benefit-ico {
+      font-size: 30px;
+      margin-bottom: 10px
+    }
+
+    .benefit-t {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px
+    }
+
+    .benefit-d {
+      font-size: 11px;
+      color: var(--gray);
+      line-height: 1.65
+    }
+
+    /* ── STATS ── */
+    .stats-bg {
+      background: linear-gradient(135deg, var(--green) 0%, #0c3320 100%);
+      padding: 60px 0
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px
+    }
+
+    @media(min-width:768px) {
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr)
+      }
+    }
+
+    .stat-item {
+      text-align: center
+    }
+
+    .stat-n {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(34px, 8vw, 50px);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px
+    }
+
+    .stat-l {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .8);
+      font-weight: 600
+    }
+
+    /* ── PRODUCTS ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px
+    }
+
+    @media(min-width:768px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    .product-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all .3s;
+      cursor: default
+    }
+
+    .product-card:hover {
+      border-color: var(--red);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(214, 40, 40, .18)
+    }
+
+    .product-img {
+      background: linear-gradient(135deg, #1C2338, #2A3352);
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 54px;
+      position: relative
+    }
+
+    .p-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--red);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase
+    }
+
+    .p-num {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, .1);
+      color: var(--gray);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px
+    }
+
+    .product-body {
+      padding: 14px
+    }
+
+    .product-name {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 3px
+    }
+
+    .product-gender {
+      font-size: 11px;
+      color: var(--gray);
+      margin-bottom: 9px
+    }
+
+    .price-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px
+    }
+
+    .price-note {
+      font-size: 9px;
+      color: var(--gray)
+    }
+
+    .price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--red)
+    }
+
+    .price-tag {
+      font-size: 10px;
+      background: rgba(26, 124, 62, .2);
+      color: #4ade80;
+      border: 1px solid rgba(26, 124, 62, .3);
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-weight: 600
+    }
+
+    .products-foot {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 12px;
+      color: var(--gray);
+      font-style: italic
+    }
+
+    /* ── WARRANTY ── */
+    .warranty-bg {
+      background: var(--navy-mid);
+      padding: 72px 0
+    }
+
+    .warranty-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 560px;
+      margin: 0 auto
+    }
+
+    .w-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center
+    }
+
+    .w-ico {
+      font-size: 38px;
+      margin-bottom: 10px
+    }
+
+    .w-period {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 4px
+    }
+
+    .w-label {
+      font-size: 13px;
+      color: var(--gray)
+    }
+
+    /* ── FAQ ── */
+    .faq-list {
+      max-width: 680px;
+      margin: 0 auto
+    }
+
+    .faq-item {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color .3s
+    }
+
+    .faq-item.open {
+      border-color: rgba(214, 40, 40, .4)
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17px 20px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      gap: 12px;
+      user-select: none
+    }
+
+    .faq-q:hover {
+      color: var(--red)
+    }
+
+    .faq-ico {
+      width: 26px;
+      height: 26px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      transition: transform .3s;
+      line-height: 1
+    }
+
+    .faq-item.open .faq-ico {
+      transform: rotate(45deg)
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .3s ease;
+      padding: 0 20px
+    }
+
+    .faq-a.open {
+      max-height: 260px;
+      padding: 0 20px 17px
+    }
+
+    .faq-a p {
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.85
+    }
+
+    /* ── SIZE CHART ── */
+    .size-bg {
+      background: var(--navy-mid);
+      padding: 80px 0
+    }
+
+    .size-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px
+    }
+
+    .size-tab {
+      padding: 8px 26px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: transparent;
+      color: var(--gray);
+      transition: all .2s;
+      font-family: 'Be Vietnam Pro', sans-serif
+    }
+
+    .size-tab.active {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red)
+    }
+
+    .size-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, .06)
+    }
+
+    .size-tbl {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 380px
+    }
+
+    .size-tbl th {
+      background: var(--red);
+      color: #fff;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      padding: 11px 14px;
+      text-align: center
+    }
+
+    .size-tbl td {
+      text-align: center;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--light);
+      border-bottom: 1px solid rgba(255, 255, 255, .04)
+    }
+
+    .size-tbl tr:last-child td {
+      border-bottom: none
+    }
+
+    .size-tbl tr:hover td {
+      background: rgba(255, 255, 255, .025)
+    }
+
+    .size-lbl {
+      background: rgba(214, 40, 40, .1) !important;
+      color: var(--red) !important;
+      font-weight: 700 !important
+    }
+
+    /* ── DEALERS ── */
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 10px;
+      padding: 0 16px;
+      max-width: 520px;
+      margin: 0 auto 20px
+    }
+
+    .search-ico {
+      color: var(--gray);
+      font-size: 17px;
+      margin-right: 10px
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 14px;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      padding: 14px 0
+    }
+
+    .search-input::placeholder {
+      color: var(--gray)
+    }
+
+    /* Province chips — horizontal cards with count on top */
+    .province-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px
+    }
+
+    .pchip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      min-width: 88px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: var(--navy-card);
+      transition: all .2s;
+      font-family: 'Be Vietnam Pro', sans-serif
+    }
+
+    .pchip:hover {
+      border-color: rgba(214, 40, 40, .5);
+      transform: translateY(-2px)
+    }
+
+    .pchip.active {
+      border-color: var(--red);
+      background: rgba(214, 40, 40, .12);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(214, 40, 40, .2)
+    }
+
+    .pchip-count {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      order: 2
+    }
+
+    .pchip.active .pchip-count {
+      color: rgba(255, 255, 255, .75)
+    }
+
+    .pchip-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray);
+      text-align: center;
+      line-height: 1.3;
+      order: 1
+    }
+
+    .pchip.active .pchip-name {
+      color: rgba(255, 255, 255, .9)
+    }
+
+    /* Store panel — shown below chips when province selected */
+    .store-panel {
+      max-width: 720px;
+      margin: 0 auto;
+      display: none
+    }
+
+    .store-panel.show {
+      display: block
+    }
+
+    .store-panel-hdr {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, .07)
+    }
+
+    .store-panel-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 15px
+    }
+
+    .store-panel-sub {
+      font-size: 11px;
+      color: var(--gray);
+      margin-left: auto
+    }
+
+    /* District label */
+    .district-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 8px;
+      padding-left: 2px
+    }
+
+    /* Store cards */
+    .store-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .store-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .06);
+      background: rgba(255, 255, 255, .02);
+      transition: all .2s
+    }
+
+    .store-card:hover {
+      border-color: rgba(214, 40, 40, .35);
+      background: rgba(214, 40, 40, .04)
+    }
+
+    .store-ico {
+      width: 34px;
+      height: 34px;
+      background: rgba(214, 40, 40, .13);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px
+    }
+
+    .store-info {
+      flex: 1;
+      min-width: 0
+    }
+
+    .store-name {
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 2px
+    }
+
+    .store-addr {
+      font-size: 11px;
+      color: var(--gray);
+      line-height: 1.5
+    }
+
+    .map-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(26, 124, 62, .15);
+      border: 1px solid rgba(26, 124, 62, .3);
+      color: #4ade80;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 11px;
+      border-radius: 8px;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: all .2s;
+      font-family: 'Be Vietnam Pro', sans-serif
+    }
+
+    .map-btn:hover {
+      background: rgba(26, 124, 62, .3);
+      border-color: #4ade80;
+      transform: translateY(-1px)
+    }
+
+    .no-results {
+      text-align: center;
+      color: var(--gray);
+      padding: 36px;
+      display: none
+    }
+
+    .chips-loading {
+      color: var(--gray);
+      font-size: 13px;
+      padding: 8px 0;
+      font-style: italic
+    }
+
+    /* ── FORM ── */
+    .form-bg {
+      background: linear-gradient(160deg, #141929 0%, #0A0F1E 100%);
+      padding: 80px 0
+    }
+
+    .form-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--navy-card);
+      border: 1px solid rgba(214, 40, 40, .28);
+      border-radius: 20px;
+      padding: 34px 28px
+    }
+
+    .form-hdr {
+      text-align: center;
+      margin-bottom: 26px
+    }
+
+    .form-title {
+      font-size: 21px;
+      font-weight: 900;
+      margin-bottom: 6px
+    }
+
+    .form-desc {
+      font-size: 14px;
+      color: var(--gray)
+    }
+
+    .form-group {
+      margin-bottom: 15px
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--light);
+      margin-bottom: 5px
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      background: rgba(255, 255, 255, .05);
+      border: 1.5px solid rgba(255, 255, 255, .1);
+      border-radius: 10px;
+      padding: 13px 15px;
+      color: #fff;
+      font-size: 14px;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      outline: none;
+      transition: all .2s
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--red);
+      background: rgba(214, 40, 40, .05);
+      box-shadow: 0 0 0 3px rgba(214, 40, 40, .1)
+    }
+
+    .form-input.err {
+      border-color: #f87171
+    }
+
+    .form-input.ok {
+      border-color: #4ade80
+    }
+
+    .form-input::placeholder {
+      color: rgba(148, 163, 184, .55)
+    }
+
+    .form-select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%2394A3B8' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center
+    }
+
+    .form-select option {
+      background: #1C2338
+    }
+
+    .err-msg {
+      font-size: 12px;
+      color: #f87171;
+      margin-top: 4px;
+      display: none
+    }
+
+    .err-msg.show {
+      display: block
+    }
+
+    .form-btn {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all .2s;
+      margin-top: 6px
+    }
+
+    .form-btn:hover {
+      background: var(--red-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(214, 40, 40, .4)
+    }
+
+    .form-btn:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+      transform: none !important
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 10px;
+      font-style: italic
+    }
+
+    .form-success {
+      text-align: center;
+      display: none;
+      padding: 10px 0
+    }
+
+    .suc-ico {
+      font-size: 58px;
+      margin-bottom: 14px
+    }
+
+    .suc-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #4ade80;
+      margin-bottom: 8px
+    }
+
+    .suc-msg {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.75
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #060810;
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      padding: 48px 0 24px
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-bottom: 28px
+    }
+
+    @media(min-width:768px) {
+      .footer-inner {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    .f-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--gray);
+      margin-bottom: 8px
+    }
+
+    .f-logo span {
+      background: var(--red);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 5px
+    }
+
+    .f-company {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px
+    }
+
+    .f-about {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.75
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 11px;
+      font-size: 13px;
+      color: var(--gray)
+    }
+
+    .contact-item a:hover {
+      color: var(--red)
+    }
+
+    .f-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      padding-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(148, 163, 184, .5)
+    }
+
+    /* ── FLOATING ── */
+    .phone-float {
+      position: fixed;
+      bottom: 28px;
+      left: 20px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 20px rgba(245, 158, 11, .5);
+      animation: pulseRing 2.5s ease-in-out infinite;
+      cursor: pointer
+    }
+
+    .back-top {
+      position: fixed;
+      bottom: 28px;
+      right: 20px;
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      background: var(--navy-lt);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all .3s;
+      border: none;
+      color: #fff
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .back-top:hover {
+      background: var(--red)
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header class="header" id="hdr">
-  <div class="h-logo">
-    <span class="badge">LOTTO</span>Thu Cũ Đổi Mới
-  </div>
-  <a href="#dang-ky" class="btn btn-red">Đăng Ký Ngay</a>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-inner">
-      <div class="campaign-pill">
-        🔥 Chiến dịch giới hạn
-        <span class="date-chip">03.07 – 05.08.2026</span>
-      </div>
-
-      <h1 class="hero-title">
-        <span class="t1">THU CŨ</span>
-        <span class="t2">ĐỔI MỚI</span>
-      </h1>
-
-      <p class="hero-sub">
-        Lên đời giày thể thao Ý <strong>LOTTO</strong> chính hãng
-        <span class="flag"><span class="g"></span><span class="w"></span><span class="r"></span></span>
-      </p>
-      <p class="hero-note">Áp dụng với mọi thương hiệu giày thể thao cũ</p>
-
-      <div class="value-box">
-        <span class="value-lbl">Hỗ trợ lên tới</span>
-        <span class="value-amt">700K</span>
-        <span class="value-sub">khi đổi giày thể thao cũ</span>
-      </div>
-
-      <div class="hero-ctas">
-        <a href="#dang-ky" class="btn btn-red lg">🎯 Đăng Ký Đổi Giày Ngay</a>
-        <button class="btn-ghost" onclick="scrollTo('#cach-thuc')">↓ Tìm hiểu cách thức</button>
-      </div>
-
-      <div class="hero-trust">
-        <div class="trust-item"><div class="trust-ico">🛡️</div><span>Bảo hành giày 2 tháng</span></div>
-        <div class="trust-item"><div class="trust-ico">🏆</div><span>Thương hiệu Ý 1973</span></div>
-        <div class="trust-item"><div class="trust-ico">⚡</div><span>Đổi nhanh tại đại lý</span></div>
-      </div>
+  <!-- HEADER -->
+  <header class="header" id="hdr">
+    <div class="h-logo">
+      <span class="badge">LOTTO</span>Thu Cũ Đổi Mới
     </div>
-  </div>
-</section>
+    <a href="#dang-ky" class="btn btn-red">Đăng Ký Ngay</a>
+  </header>
 
-<!-- COUNTDOWN -->
-<div class="countdown">
-  <div class="container">
-    <p class="cd-label">⏰ Ưu đãi kết thúc sau</p>
-    <div class="cd-timer">
-      <div class="cd-block"><div class="cd-num" id="cd-d">29</div><div class="cd-unit">Ngày</div></div>
-      <div class="cd-sep">:</div>
-      <div class="cd-block"><div class="cd-num" id="cd-h">00</div><div class="cd-unit">Giờ</div></div>
-      <div class="cd-sep">:</div>
-      <div class="cd-block"><div class="cd-num" id="cd-m">00</div><div class="cd-unit">Phút</div></div>
-      <div class="cd-sep">:</div>
-      <div class="cd-block"><div class="cd-num" id="cd-s">00</div><div class="cd-unit">Giây</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- STEPS -->
-<section class="section" id="cach-thuc">
-  <div class="container">
-    <div class="text-center reveal">
-      <span class="sec-tag">Cách thức</span>
-      <h2 class="sec-title">3 Bước Đơn Giản<br>Lên Đời Giày Mới</h2>
-      <p class="sec-desc">Quy trình nhanh gọn – mang giày cũ đến, về nhà với đôi Lotto chính hãng</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card reveal" style="transition-delay:.08s">
-        <div class="step-n">1</div>
-        <div class="step-ico">👟</div>
-        <div class="step-t">Mang giày cũ đến</div>
-        <p class="step-d">Bất kỳ thương hiệu nào. Không bắt buộc phải là giày Lotto cũ. Mang đến điểm đại lý gần nhất.</p>
-        <div class="step-arr">→</div>
-      </div>
-      <div class="step-card reveal" style="transition-delay:.16s">
-        <div class="step-n">2</div>
-        <div class="step-ico">🔍</div>
-        <div class="step-t">Nhân viên kiểm tra</div>
-        <p class="step-d">Giày rách → hỗ trợ <strong>500K</strong>. Giày mòn đế → hỗ trợ <strong>700K</strong> khi mua sản phẩm áp dụng.</p>
-        <div class="step-arr">→</div>
-      </div>
-      <div class="step-card reveal" style="transition-delay:.24s">
-        <div class="step-n">3</div>
-        <div class="step-ico">🎉</div>
-        <div class="step-t">Nhận giày Lotto mới</div>
-        <p class="step-d">Chọn mẫu yêu thích trong danh sách áp dụng, thanh toán phần chênh lệch và về nhà với đôi giày xịn!</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="grad-divider"></div>
-
-<!-- BENEFITS -->
-<section class="benefits-bg">
-  <div class="container">
-    <div class="text-center reveal">
-      <span class="sec-tag">Tại sao chọn Lotto</span>
-      <h2 class="sec-title">4 Lý Do Không Thể<br>Bỏ Lỡ Cơ Hội Này</h2>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card reveal" style="transition-delay:.05s">
-        <div class="benefit-ico">🦺</div>
-        <div class="benefit-t">Giảm nguy cơ chấn thương</div>
-        <p class="benefit-d">Đế mòn tăng nguy cơ trật khớp khi chơi thể thao. Giày mới bảo vệ bạn tốt hơn.</p>
-      </div>
-      <div class="benefit-card reveal" style="transition-delay:.1s">
-        <div class="benefit-ico">🎾</div>
-        <div class="benefit-t">Chuyên dụng Pickleball &amp; Tennis</div>
-        <p class="benefit-d">Tối ưu cho sân đất nện, sân cứng với độ bám và đệm lót chuyên biệt.</p>
-      </div>
-      <div class="benefit-card reveal" style="transition-delay:.15s">
-        <div class="benefit-ico">🇮🇹</div>
-        <div class="benefit-t">Công nghệ đế chuẩn Ý</div>
-        <p class="benefit-d">Hơn 50 năm kinh nghiệm từ Italy – thương hiệu thể thao uy tín toàn cầu.</p>
-      </div>
-      <div class="benefit-card reveal" style="transition-delay:.2s">
-        <div class="benefit-ico">✅</div>
-        <div class="benefit-t">Áp dụng mọi thương hiệu</div>
-        <p class="benefit-d">Nike, Adidas, Mizuno, Yonex... đều được chấp nhận. Không giới hạn nhãn hiệu.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats-bg">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-n" data-target="700">0</div>
-        <div class="stat-l">K hỗ trợ tối đa</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-n" data-target="50">0</div>
-        <div class="stat-l">+ năm thương hiệu Ý</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-n" data-target="100">0</div>
-        <div class="stat-l">+ điểm bán toàn quốc</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-n" data-target="6">0</div>
-        <div class="stat-l">mẫu giày áp dụng</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="grad-divider"></div>
-
-<!-- PRODUCTS -->
-<section class="section">
-  <div class="container">
-    <div class="text-center reveal">
-      <span class="sec-tag">Sản phẩm</span>
-      <h2 class="sec-title">Bảng Giá Sản Phẩm<br>Áp Dụng Chương Trình</h2>
-      <p class="sec-desc">Giá niêm yết – chưa bao gồm khoản hỗ trợ khi đổi giày cũ</p>
-    </div>
-    <div class="products-grid">
-      <div class="product-card reveal" style="transition-delay:.04s">
-        <div class="product-img">👟<span class="p-badge">Nam</span><span class="p-num">01</span></div>
-        <div class="product-body">
-          <div class="product-name">RAPTOR 300</div>
-          <div class="product-gender">👨 Dành cho nam</div>
-          <div class="price-row">
-            <div><div class="price-note">Giá niêm yết</div><div class="price">2.359.000₫</div></div>
-            <span class="price-tag">-500K</span>
-          </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="campaign-pill">
+          🔥 Chiến dịch giới hạn
+          <span class="date-chip">03.07 – 05.08.2026</span>
         </div>
-      </div>
-      <div class="product-card reveal" style="transition-delay:.08s">
-        <div class="product-img">👟<span class="p-badge">Nam</span><span class="p-num">02</span></div>
-        <div class="product-body">
-          <div class="product-name">MIRAGE 300</div>
-          <div class="product-gender">👨 Dành cho nam</div>
-          <div class="price-row">
-            <div><div class="price-note">Giá niêm yết</div><div class="price">2.559.000₫</div></div>
-            <span class="price-tag">-700K</span>
-          </div>
+
+        <h1 class="hero-title">
+          <span class="t1">THU CŨ</span>
+          <span class="t2">ĐỔI MỚI</span>
+        </h1>
+
+        <p class="hero-sub">
+          Lên đời giày thể thao Ý <strong>LOTTO</strong> chính hãng
+          <span class="flag"><span class="g"></span><span class="w"></span><span class="r"></span></span>
+        </p>
+        <p class="hero-note">Áp dụng với mọi thương hiệu giày thể thao cũ</p>
+
+        <div class="value-box">
+          <span class="value-lbl">Hỗ trợ lên tới</span>
+          <span class="value-amt">700K</span>
+          <span class="value-sub">khi đổi giày thể thao cũ</span>
         </div>
-      </div>
-      <div class="product-card reveal" style="transition-delay:.12s">
-        <div class="product-img">👟<span class="p-badge">Nam</span><span class="p-num">03</span></div>
-        <div class="product-body">
-          <div class="product-name">MIRAGE 700</div>
-          <div class="product-gender">👨 Dành cho nam</div>
-          <div class="price-row">
-            <div><div class="price-note">Giá niêm yết</div><div class="price">1.839.000₫</div></div>
-            <span class="price-tag">-700K</span>
-          </div>
+
+        <div class="hero-ctas">
+          <a href="#dang-ky" class="btn btn-red lg">🎯 Đăng Ký Đổi Giày Ngay</a>
+          <button class="btn-ghost" onclick="scrollTo('#cach-thuc')">↓ Tìm hiểu cách thức</button>
         </div>
-      </div>
-      <div class="product-card reveal" style="transition-delay:.16s">
-        <div class="product-img">👠<span class="p-badge">Nữ</span><span class="p-num">04</span></div>
-        <div class="product-body">
-          <div class="product-name">MIRAGE 700</div>
-          <div class="product-gender">👩 Dành cho nữ</div>
-          <div class="price-row">
-            <div><div class="price-note">Giá niêm yết</div><div class="price">1.839.000₫</div></div>
-            <span class="price-tag">-700K</span>
+
+        <div class="hero-trust">
+          <div class="trust-item">
+            <div class="trust-ico">🛡️</div><span>Bảo hành giày 2 tháng</span>
           </div>
-        </div>
-      </div>
-      <div class="product-card reveal" style="transition-delay:.2s">
-        <div class="product-img">👠<span class="p-badge">Nữ</span><span class="p-num">05</span></div>
-        <div class="product-body">
-          <div class="product-name">NIROX ANGEL</div>
-          <div class="product-gender">👩 Dành cho nữ</div>
-          <div class="price-row">
-            <div><div class="price-note">Giá niêm yết</div><div class="price">1.290.000₫</div></div>
-            <span class="price-tag">-500K</span>
+          <div class="trust-item">
+            <div class="trust-ico">🏆</div><span>Thương hiệu Ý 1973</span>
           </div>
-        </div>
-      </div>
-      <div class="product-card reveal" style="transition-delay:.24s">
-        <div class="product-img">👠<span class="p-badge">Nữ</span><span class="p-num">06</span></div>
-        <div class="product-body">
-          <div class="product-name">NIROX ANGEL II</div>
-          <div class="product-gender">👩 Dành cho nữ</div>
-          <div class="price-row">
-            <div><div class="price-note">Giá niêm yết</div><div class="price">1.290.000₫</div></div>
-            <span class="price-tag">-500K</span>
+          <div class="trust-item">
+            <div class="trust-ico">⚡</div><span>Đổi nhanh tại đại lý</span>
           </div>
         </div>
       </div>
     </div>
-    <p class="products-foot">(*) Chưa bao gồm giá giảm cho đôi giày cũ. Hỗ trợ tối đa 500K (giày rách) hoặc 700K (giày mòn đế)</p>
-    <div style="text-align:center;margin-top:30px">
-      <a href="#dang-ky" class="btn btn-red lg">Đăng Ký Đổi Ngay →</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- WARRANTY -->
-<section class="warranty-bg">
-  <div class="container">
-    <div class="text-center reveal">
-      <span class="sec-tag">Cam kết</span>
-      <h2 class="sec-title">Chất Lượng Được Bảo Hành</h2>
-    </div>
-    <div class="warranty-grid reveal">
-      <div class="w-card">
-        <div class="w-ico">🛡️</div>
-        <div class="w-period">2 Tháng</div>
-        <div class="w-label">Bảo hành thân giày</div>
-      </div>
-      <div class="w-card">
-        <div class="w-ico">🔧</div>
-        <div class="w-period">1 Tháng</div>
-        <div class="w-label">Bảo hành mòn đế</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section">
-  <div class="container">
-    <div class="text-center reveal">
-      <span class="sec-tag">Câu hỏi thường gặp</span>
-      <h2 class="sec-title">Giải Đáp Thắc Mắc</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          1. Chương trình Thu cũ đổi mới Lotto là gì?
-          <div class="faq-ico">+</div>
+  <!-- COUNTDOWN -->
+  <div class="countdown">
+    <div class="container">
+      <p class="cd-label">⏰ Ưu đãi kết thúc sau</p>
+      <div class="cd-timer">
+        <div class="cd-block">
+          <div class="cd-num" id="cd-d">29</div>
+          <div class="cd-unit">Ngày</div>
         </div>
-        <div class="faq-a">
-          <p>Khách hàng mang giày thể thao cũ (bất kỳ thương hiệu) đến điểm bán Lotto để được hỗ trợ giảm giá khi mua giày Lotto chính hãng. Áp dụng từ 03/07 đến 05/08/2026.</p>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <div class="cd-num" id="cd-h">00</div>
+          <div class="cd-unit">Giờ</div>
         </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          2. Giày cũ có bắt buộc là giày Lotto không?
-          <div class="faq-ico">+</div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <div class="cd-num" id="cd-m">00</div>
+          <div class="cd-unit">Phút</div>
         </div>
-        <div class="faq-a">
-          <p>Không. Áp dụng với mọi thương hiệu giày thể thao cũ: Nike, Adidas, Mizuno, Yonex, Babolat... Chỉ cần là giày thể thao là được.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          3. Mức hỗ trợ là bao nhiêu?
-          <div class="faq-ico">+</div>
-        </div>
-        <div class="faq-a">
-          <p>• <strong>Giày rách:</strong> hỗ trợ 500.000₫ khi mua sản phẩm áp dụng<br>• <strong>Giày mòn đế:</strong> hỗ trợ 700.000₫ khi mua sản phẩm áp dụng<br>Khoản hỗ trợ được trừ thẳng vào giá mua.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          4. Có thể cộng dồn nhiều đôi giày cũ không?
-          <div class="faq-ico">+</div>
-        </div>
-        <div class="faq-a">
-          <p>Có. Bạn có thể mang nhiều đôi giày cũ và cộng dồn số tiền hỗ trợ. Liên hệ hotline 0964 890 686 để được tư vấn chi tiết.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          5. Chương trình áp dụng ở đâu?
-          <div class="faq-ico">+</div>
-        </div>
-        <div class="faq-a">
-          <p>Tại hệ thống đại lý chính thức của Lotto trên toàn quốc. Xem danh sách đầy đủ ở phần Đại Lý bên dưới hoặc truy cập lottosports.vn.</p>
+        <div class="cd-sep">:</div>
+        <div class="cd-block">
+          <div class="cd-num" id="cd-s">00</div>
+          <div class="cd-unit">Giây</div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<div class="grad-divider"></div>
-
-<!-- SIZE CHART -->
-<section class="size-bg">
-  <div class="container">
-    <div class="text-center reveal">
-      <span class="sec-tag">Kích cỡ</span>
-      <h2 class="sec-title">Bảng Size Giày Lotto</h2>
-      <p class="sec-desc">Đo chiều dài bàn chân để chọn size chính xác nhất</p>
-    </div>
-    <div class="size-tabs">
-      <button class="size-tab active" onclick="switchSize('nam',this)">Nam</button>
-      <button class="size-tab" onclick="switchSize('nu',this)">Nữ</button>
-    </div>
-    <div class="size-wrap">
-      <table class="size-tbl" id="sz-nam">
-        <thead><tr>
-          <th class="size-lbl">Bàn chân (cm)</th>
-          <th>25.2</th><th>25.5</th><th>26.5</th><th>27</th><th>27.7</th><th>28.5</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="size-lbl">Size US</td><td>7</td><td>7.5</td><td>8.5</td><td>9</td><td>10</td><td>11</td></tr>
-          <tr><td class="size-lbl">Size EU</td><td>39</td><td>40</td><td>41</td><td>42</td><td>43</td><td>44</td></tr>
-        </tbody>
-      </table>
-      <table class="size-tbl" id="sz-nu" style="display:none">
-        <thead><tr>
-          <th class="size-lbl">Bàn chân (cm)</th>
-          <th>23</th><th>24</th><th>24.5</th><th>25.2</th><th>25.5</th>
-        </tr></thead>
-        <tbody>
-          <tr><td class="size-lbl">Size US</td><td>5.5</td><td>6.5</td><td>7</td><td>8</td><td>8.5</td></tr>
-          <tr><td class="size-lbl">Size EU</td><td>36</td><td>37</td><td>38</td><td>39</td><td>40</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- DEALERS -->
-<section class="section">
-  <div class="container">
-    <div class="text-center reveal">
-      <span class="sec-tag">Hệ thống phân phối</span>
-      <h2 class="sec-title">Đại Lý Triển Khai<br>Chương Trình</h2>
-      <p class="sec-desc">Chọn tỉnh/thành phố để xem điểm bán gần bạn</p>
-    </div>
-
-    <!-- Search -->
-    <div class="search-wrap">
-      <span class="search-ico">🔍</span>
-      <input class="search-input" type="text" id="dealer-input" placeholder="Tìm theo tên đại lý hoặc tỉnh/thành..." oninput="dealerSearch(this.value)">
-    </div>
-
-    <!-- Province chips — tự động tạo từ Google Sheets -->
-    <div class="province-chips" id="province-chips">
-      <div class="chips-loading">Đang tải danh sách đại lý...</div>
-    </div>
-
-    <!-- Store panel: hiện khi click tỉnh -->
-    <div class="store-panel" id="store-panel"></div>
-
-    <!-- Fallback data (dùng khi Sheets không load được) -->
-    <div style="display:none" id="dealer-data">
-
-      <!-- Thanh Hóa -->
-      <div class="province-group" data-p="thanhhoa">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">Thanh Hóa</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
+  <!-- STEPS -->
+  <section class="section" id="cach-thuc">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Cách thức</span>
+        <h2 class="sec-title">3 Bước Đơn Giản<br>Lên Đời Giày Mới</h2>
+        <p class="sec-desc">Quy trình nhanh gọn – mang giày cũ đến, về nhà với đôi Lotto chính hãng</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal" style="transition-delay:.08s">
+          <div class="step-n">1</div>
+          <div class="step-ico">👟</div>
+          <div class="step-t">Mang giày cũ đến</div>
+          <p class="step-d">Bất kỳ thương hiệu nào. Không bắt buộc phải là giày Lotto cũ. Mang đến điểm đại lý gần nhất.
+          </p>
+          <div class="step-arr">→</div>
         </div>
-        <div class="province-body">
-          <div class="district-lbl">TP Sầm Sơn</div>
-          <div class="store-list">
-            <div class="store-card" data-q="tùng anh sport 173 lê lợi trường sơn sầm sơn thanh hóa">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">Tùng Anh Sport</div>
-                <div class="store-addr">173 Lê Lợi, Trường Sơn, TP Sầm Sơn</div>
+        <div class="step-card reveal" style="transition-delay:.16s">
+          <div class="step-n">2</div>
+          <div class="step-ico">🔍</div>
+          <div class="step-t">Nhân viên kiểm tra</div>
+          <p class="step-d">Giày rách → hỗ trợ <strong>500K</strong>. Giày mòn đế → hỗ trợ <strong>700K</strong> khi mua
+            sản phẩm áp dụng.</p>
+          <div class="step-arr">→</div>
+        </div>
+        <div class="step-card reveal" style="transition-delay:.24s">
+          <div class="step-n">3</div>
+          <div class="step-ico">🎉</div>
+          <div class="step-t">Nhận giày Lotto mới</div>
+          <p class="step-d">Chọn mẫu yêu thích trong danh sách áp dụng, thanh toán phần chênh lệch và về nhà với đôi
+            giày xịn!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grad-divider"></div>
+
+  <!-- BENEFITS -->
+  <section class="benefits-bg">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Tại sao chọn Lotto</span>
+        <h2 class="sec-title">4 Lý Do Không Thể<br>Bỏ Lỡ Cơ Hội Này</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card reveal" style="transition-delay:.05s">
+          <div class="benefit-ico">🦺</div>
+          <div class="benefit-t">Giảm nguy cơ chấn thương</div>
+          <p class="benefit-d">Đế mòn tăng nguy cơ trật khớp khi chơi thể thao. Giày mới bảo vệ bạn tốt hơn.</p>
+        </div>
+        <div class="benefit-card reveal" style="transition-delay:.1s">
+          <div class="benefit-ico">🎾</div>
+          <div class="benefit-t">Chuyên dụng Pickleball &amp; Tennis</div>
+          <p class="benefit-d">Tối ưu cho sân đất nện, sân cứng với độ bám và đệm lót chuyên biệt.</p>
+        </div>
+        <div class="benefit-card reveal" style="transition-delay:.15s">
+          <div class="benefit-ico">🇮🇹</div>
+          <div class="benefit-t">Công nghệ đế chuẩn Ý</div>
+          <p class="benefit-d">Hơn 50 năm kinh nghiệm từ Italy – thương hiệu thể thao uy tín toàn cầu.</p>
+        </div>
+        <div class="benefit-card reveal" style="transition-delay:.2s">
+          <div class="benefit-ico">✅</div>
+          <div class="benefit-t">Áp dụng mọi thương hiệu</div>
+          <p class="benefit-d">Nike, Adidas, Mizuno, Yonex... đều được chấp nhận. Không giới hạn nhãn hiệu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-bg">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-n" data-target="700">0</div>
+          <div class="stat-l">K hỗ trợ tối đa</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n" data-target="50">0</div>
+          <div class="stat-l">+ năm thương hiệu Ý</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n" data-target="100">0</div>
+          <div class="stat-l">+ điểm bán toàn quốc</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-n" data-target="6">0</div>
+          <div class="stat-l">mẫu giày áp dụng</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grad-divider"></div>
+
+  <!-- PRODUCTS -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Sản phẩm</span>
+        <h2 class="sec-title">Bảng Giá Sản Phẩm<br>Áp Dụng Chương Trình</h2>
+        <p class="sec-desc">Giá niêm yết – chưa bao gồm khoản hỗ trợ khi đổi giày cũ</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal" style="transition-delay:.04s">
+          <div class="product-img">👟<span class="p-badge">Nam</span><span class="p-num">01</span></div>
+          <div class="product-body">
+            <div class="product-name">RAPTOR 300</div>
+            <div class="product-gender">👨 Dành cho nam</div>
+            <div class="price-row">
+              <div>
+                <div class="price-note">Giá niêm yết</div>
+                <div class="price">2.359.000₫</div>
               </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=173+L%C3%AA+L%E1%BB%A3i+S%E1%BA%A7m+S%C6%A1n+Thanh+H%C3%B3a+Vi%E1%BB%87t+Nam" target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              <span class="price-tag">-500K</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:.08s">
+          <div class="product-img">👟<span class="p-badge">Nam</span><span class="p-num">02</span></div>
+          <div class="product-body">
+            <div class="product-name">MIRAGE 300</div>
+            <div class="product-gender">👨 Dành cho nam</div>
+            <div class="price-row">
+              <div>
+                <div class="price-note">Giá niêm yết</div>
+                <div class="price">2.559.000₫</div>
+              </div>
+              <span class="price-tag">-700K</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:.12s">
+          <div class="product-img">👟<span class="p-badge">Nam</span><span class="p-num">03</span></div>
+          <div class="product-body">
+            <div class="product-name">MIRAGE 700</div>
+            <div class="product-gender">👨 Dành cho nam</div>
+            <div class="price-row">
+              <div>
+                <div class="price-note">Giá niêm yết</div>
+                <div class="price">1.839.000₫</div>
+              </div>
+              <span class="price-tag">-700K</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:.16s">
+          <div class="product-img">👠<span class="p-badge">Nữ</span><span class="p-num">04</span></div>
+          <div class="product-body">
+            <div class="product-name">MIRAGE 700</div>
+            <div class="product-gender">👩 Dành cho nữ</div>
+            <div class="price-row">
+              <div>
+                <div class="price-note">Giá niêm yết</div>
+                <div class="price">1.839.000₫</div>
+              </div>
+              <span class="price-tag">-700K</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:.2s">
+          <div class="product-img">👠<span class="p-badge">Nữ</span><span class="p-num">05</span></div>
+          <div class="product-body">
+            <div class="product-name">NIROX ANGEL</div>
+            <div class="product-gender">👩 Dành cho nữ</div>
+            <div class="price-row">
+              <div>
+                <div class="price-note">Giá niêm yết</div>
+                <div class="price">1.290.000₫</div>
+              </div>
+              <span class="price-tag">-500K</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:.24s">
+          <div class="product-img">👠<span class="p-badge">Nữ</span><span class="p-num">06</span></div>
+          <div class="product-body">
+            <div class="product-name">NIROX ANGEL II</div>
+            <div class="product-gender">👩 Dành cho nữ</div>
+            <div class="price-row">
+              <div>
+                <div class="price-note">Giá niêm yết</div>
+                <div class="price">1.290.000₫</div>
+              </div>
+              <span class="price-tag">-500K</span>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Lâm Đồng -->
-      <div class="province-group" data-p="lamdong">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">Lâm Đồng</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
-        </div>
-        <div class="province-body">
-          <div class="district-lbl">TP Bảo Lộc</div>
-          <div class="store-list">
-            <div class="store-card" data-q="tâm sport 205 hà giang bảo lộc lâm đồng">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">Tâm Sport</div>
-                <div class="store-addr">205 Hà Giang, TP Bảo Lộc</div>
-              </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=205+H%C3%A0+Giang+B%E1%BA%A3o+L%E1%BB%99c+L%C3%A2m+%C4%90%E1%BB%93ng" target="_blank" rel="noopener">🗺️ Bản đồ</a>
-            </div>
-          </div>
-        </div>
+      <p class="products-foot">(*) Chưa bao gồm giá giảm cho đôi giày cũ. Hỗ trợ tối đa 500K (giày rách) hoặc 700K (giày
+        mòn đế)</p>
+      <div style="text-align:center;margin-top:30px">
+        <a href="#dang-ky" class="btn btn-red lg">Đăng Ký Đổi Ngay →</a>
       </div>
-
-      <!-- TP Hồ Chí Minh -->
-      <div class="province-group" data-p="hcm">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">TP Hồ Chí Minh</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
-        </div>
-        <div class="province-body">
-          <div class="district-lbl">Quận Gò Vấp</div>
-          <div class="store-list">
-            <div class="store-card" data-q="đức tài sport 210 phạm văn chiêu gò vấp hồ chí minh">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">Đức Tài Sport</div>
-                <div class="store-addr">210 Phạm Văn Chiêu, Thới Tây Hội, Q. Gò Vấp</div>
-              </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=210+Ph%E1%BA%A1m+V%C4%83n+Chi%C3%AAu+G%C3%B2+V%E1%BA%A5p+H%E1%BB%93+Ch%C3%AD+Minh" target="_blank" rel="noopener">🗺️ Bản đồ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Đồng Tháp -->
-      <div class="province-group" data-p="dongthap">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">Đồng Tháp</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
-        </div>
-        <div class="province-body">
-          <div class="district-lbl">TP Cao Lãnh</div>
-          <div class="store-list">
-            <div class="store-card" data-q="minh luận sport 235a hùng vương cao lãnh đồng tháp">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">Minh Luận Sport</div>
-                <div class="store-addr">235A Hùng Vương, Phường 1, TP Cao Lãnh</div>
-              </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=235A+H%C3%B9ng+V%C6%B0%C6%A1ng+Cao+L%C3%A3nh+%C4%90%E1%BB%93ng+Th%C3%A1p" target="_blank" rel="noopener">🗺️ Bản đồ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Đà Nẵng -->
-      <div class="province-group" data-p="danang">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">Đà Nẵng</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
-        </div>
-        <div class="province-body">
-          <div class="district-lbl">Quận Hải Châu</div>
-          <div class="store-list">
-            <div class="store-card" data-q="11 sport 24 tố hữu hòa cường nam hải châu đà nẵng">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">11 Sport</div>
-                <div class="store-addr">24 Tố Hữu, Hòa Cường Nam, Q. Hải Châu</div>
-              </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=24+T%E1%BB%91+H%E1%BB%AFu+H%C3%B2a+C%C6%B0%E1%BB%9Dng+Nam+H%E1%BA%A3i+Ch%C3%A2u+%C4%90%C3%A0+N%E1%BA%B5ng" target="_blank" rel="noopener">🗺️ Bản đồ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bình Định -->
-      <div class="province-group" data-p="binhdinh">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">Bình Định</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
-        </div>
-        <div class="province-body">
-          <div class="district-lbl">TP Quy Nhơn</div>
-          <div class="store-list">
-            <div class="store-card" data-q="tgcb 274 nguyễn thị định quy nhơn bình định">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">TGCB</div>
-                <div class="store-addr">274 Nguyễn Thị Định, TP Quy Nhơn</div>
-              </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=274+Nguy%E1%BB%85n+Th%E1%BB%8B+%C4%90%E1%BB%8Bnh+Quy+Nh%C6%A1n+B%C3%ACnh+%C4%90%E1%BB%8Bnh" target="_blank" rel="noopener">🗺️ Bản đồ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tuyên Quang -->
-      <div class="province-group" data-p="tuyenquang">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">Tuyên Quang</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
-        </div>
-        <div class="province-body">
-          <div class="district-lbl">TP Tuyên Quang</div>
-          <div class="store-list">
-            <div class="store-card" data-q="dũng giang 285 quang trung tuyên quang">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">Dũng Giang</div>
-                <div class="store-addr">285 Quang Trung, TP Tuyên Quang</div>
-              </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=285+Quang+Trung+Tuy%C3%AAn+Quang" target="_blank" rel="noopener">🗺️ Bản đồ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Đắk Lắk -->
-      <div class="province-group" data-p="daklak">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">Đắk Lắk</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
-        </div>
-        <div class="province-body">
-          <div class="district-lbl">Tuy Hòa</div>
-          <div class="store-list">
-            <div class="store-card" data-q="phước hiền sport 291 trường chinh tuy hòa đắk lắk">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">Phước Hiền Sport</div>
-                <div class="store-addr">291 Trường Chinh, Tuy Hòa, Đắk Lắk</div>
-              </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=291+Tr%C6%B0%E1%BB%9Dng+Chinh+Tuy+H%C3%B2a+%C4%90%E1%BA%AFk+L%E1%BA%AFk" target="_blank" rel="noopener">🗺️ Bản đồ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sơn La -->
-      <div class="province-group" data-p="sonla">
-        <div class="province-hdr" onclick="toggleProvince(this)">
-          <span>📍</span>
-          <span class="province-name">Sơn La</span>
-          <span class="province-count">1 điểm</span>
-          <span class="province-chevron">▼</span>
-        </div>
-        <div class="province-body">
-          <div class="district-lbl">TX Sơn La</div>
-          <div class="store-list">
-            <div class="store-card" data-q="sơn la sport 299 chu văn thịnh sơn la">
-              <div class="store-ico">🏪</div>
-              <div class="store-info">
-                <div class="store-name">Sơn La Sport</div>
-                <div class="store-addr">299 Đường Chu Văn Thịnh, TX Sơn La</div>
-              </div>
-              <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=299+Chu+V%C4%83n+Th%E1%BB%8Bnh+S%C6%A1n+La" target="_blank" rel="noopener">🗺️ Bản đồ</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end dealer-data -->
-    <div class="no-results" id="no-res">Không tìm thấy đại lý phù hợp</div>
-  </div>
-</section>
-
-<div class="grad-divider"></div>
-
-<!-- FORM -->
-<section class="form-bg" id="dang-ky">
-  <div class="container">
-    <div class="text-center reveal" style="margin-bottom:36px">
-      <span class="sec-tag">Đăng ký ngay</span>
-      <h2 class="sec-title">Để Lại Thông Tin<br>Nhận Tư Vấn Miễn Phí</h2>
-      <p class="sec-desc">Nhân viên liên hệ trong vòng 24 giờ để hỗ trợ bạn đổi giày</p>
     </div>
-    <div class="form-wrap reveal">
-      <div id="form-content">
-        <div class="form-hdr">
-          <div class="form-title">🎯 Đăng Ký Đổi Giày</div>
-          <p class="form-desc">Điền thông tin bên dưới để nhận ưu đãi</p>
-        </div>
-        <form onsubmit="submitForm(event)">
-          <div class="form-group">
-            <label class="form-label">Họ và Tên *</label>
-            <input class="form-input" id="f-name" type="text" placeholder="Nguyễn Văn A">
-            <div class="err-msg" id="e-name">Vui lòng nhập họ tên (ít nhất 2 ký tự)</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Số điện thoại *</label>
-            <input class="form-input" id="f-phone" type="tel" placeholder="0912 345 678">
-            <div class="err-msg" id="e-phone">Số điện thoại không hợp lệ (10 số, bắt đầu bằng 0)</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Tỉnh / Thành phố *</label>
-            <select class="form-select" id="f-city">
-              <option value="">-- Chọn tỉnh/thành phố --</option>
-              <option>Hà Nội</option><option>TP Hồ Chí Minh</option><option>Đà Nẵng</option>
-              <option>Thanh Hóa</option><option>Lâm Đồng</option><option>Đồng Tháp</option>
-              <option>Bình Định</option><option>Tuyên Quang</option><option>Đắk Lắk</option>
-              <option>Sơn La</option><option>Khác</option>
-            </select>
-            <div class="err-msg" id="e-city">Vui lòng chọn tỉnh/thành phố</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Tình trạng giày cũ</label>
-            <select class="form-select" id="f-cond">
-              <option value="">-- Chọn tình trạng --</option>
-              <option value="rach">Giày rách (hỗ trợ 500K)</option>
-              <option value="mon">Giày mòn đế (hỗ trợ 700K)</option>
-              <option value="chua-biet">Chưa biết, cần tư vấn</option>
-            </select>
-          </div>
-          <button type="submit" class="form-btn" id="sub-btn">ĐẶT HÀNG NGAY 🎯</button>
-        </form>
-        <p class="form-note">(Sau khi đăng ký sẽ có nhân viên liên hệ để hỗ trợ)</p>
+  </section>
+
+  <!-- WARRANTY -->
+  <section class="warranty-bg">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Cam kết</span>
+        <h2 class="sec-title">Chất Lượng Được Bảo Hành</h2>
       </div>
-      <div class="form-success" id="form-ok">
-        <div class="suc-ico">🎉</div>
-        <div class="suc-title">Đăng Ký Thành Công!</div>
-        <p class="suc-msg" style="margin-top:10px">Cảm ơn bạn đã quan tâm đến chương trình.<br>Nhân viên sẽ liên hệ trong vòng <strong style="color:#fff">24 giờ</strong>.</p>
-        <div style="margin-top:22px">
-          <a href="tel:0964890686" class="btn btn-red lg">📞 Gọi ngay: 0964 890 686</a>
+      <div class="warranty-grid reveal">
+        <div class="w-card">
+          <div class="w-ico">🛡️</div>
+          <div class="w-period">2 Tháng</div>
+          <div class="w-label">Bảo hành thân giày</div>
+        </div>
+        <div class="w-card">
+          <div class="w-ico">🔧</div>
+          <div class="w-period">1 Tháng</div>
+          <div class="w-label">Bảo hành mòn đế</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <div class="f-logo"><span>LOTTO</span>SPORTS VIỆT NAM</div>
-        <div class="f-company">CÔNG TY CỔ PHẦN NERO</div>
-        <p class="f-about">Thương hiệu giày thể thao Ý với hơn 50 năm lịch sử. Chính thức phân phối tại Việt Nam bởi Công ty Cổ phần NERO.</p>
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Câu hỏi thường gặp</span>
+        <h2 class="sec-title">Giải Đáp Thắc Mắc</h2>
       </div>
-      <div>
-        <div class="contact-item">📍 <span>NV1-19 KĐT Dream Town, Đường 70, Phường Tứ Liêm, Hà Nội</span></div>
-        <div class="contact-item">📞 <a href="tel:0964890686">0964 890 686</a></div>
-        <div class="contact-item">✉️ <a href="mailto:contact@nero.com.vn">contact@nero.com.vn</a></div>
-        <div class="contact-item">🌐 <a href="https://lottosports.vn" target="_blank" rel="noopener">lottosports.vn</a></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            1. Chương trình Thu cũ đổi mới Lotto là gì?
+            <div class="faq-ico">+</div>
+          </div>
+          <div class="faq-a">
+            <p>Khách hàng mang giày thể thao cũ (bất kỳ thương hiệu) đến điểm bán Lotto để được hỗ trợ giảm giá khi mua
+              giày Lotto chính hãng. Áp dụng từ 03/07 đến 05/08/2026.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            2. Giày cũ có bắt buộc là giày Lotto không?
+            <div class="faq-ico">+</div>
+          </div>
+          <div class="faq-a">
+            <p>Không. Áp dụng với mọi thương hiệu giày thể thao cũ: Nike, Adidas, Mizuno, Yonex, Babolat... Chỉ cần là
+              giày thể thao là được.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            3. Mức hỗ trợ là bao nhiêu?
+            <div class="faq-ico">+</div>
+          </div>
+          <div class="faq-a">
+            <p>• <strong>Giày rách:</strong> hỗ trợ 500.000₫ khi mua sản phẩm áp dụng<br>• <strong>Giày mòn đế:</strong>
+              hỗ trợ 700.000₫ khi mua sản phẩm áp dụng<br>Khoản hỗ trợ được trừ thẳng vào giá mua.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            4. Có thể cộng dồn nhiều đôi giày cũ không?
+            <div class="faq-ico">+</div>
+          </div>
+          <div class="faq-a">
+            <p>Có. Bạn có thể mang nhiều đôi giày cũ và cộng dồn số tiền hỗ trợ. Liên hệ hotline 0964 890 686 để được tư
+              vấn chi tiết.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            5. Chương trình áp dụng ở đâu?
+            <div class="faq-ico">+</div>
+          </div>
+          <div class="faq-a">
+            <p>Tại hệ thống đại lý chính thức của Lotto trên toàn quốc. Xem danh sách đầy đủ ở phần Đại Lý bên dưới hoặc
+              truy cập lottosports.vn.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="f-bottom">© 2026 Lotto Sport Viet Nam. All rights reserved.</div>
-  </div>
-</footer>
+  </section>
 
-<!-- FLOATING -->
-<a href="tel:0964890686" class="phone-float" title="Gọi ngay">📞</a>
-<button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Lên đầu">↑</button>
+  <div class="grad-divider"></div>
 
-<script>
-// Header + back-to-top
-const hdr = document.getElementById('hdr');
-const bt = document.getElementById('back-top');
-window.addEventListener('scroll', () => {
-  hdr.classList.toggle('scrolled', window.scrollY > 80);
-  bt.classList.toggle('visible', window.scrollY > 400);
-});
+  <!-- SIZE CHART -->
+  <section class="size-bg">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Kích cỡ</span>
+        <h2 class="sec-title">Bảng Size Giày Lotto</h2>
+        <p class="sec-desc">Đo chiều dài bàn chân để chọn size chính xác nhất</p>
+      </div>
+      <div class="size-tabs">
+        <button class="size-tab active" onclick="switchSize('nam',this)">Nam</button>
+        <button class="size-tab" onclick="switchSize('nu',this)">Nữ</button>
+      </div>
+      <div class="size-wrap">
+        <table class="size-tbl" id="sz-nam">
+          <thead>
+            <tr>
+              <th class="size-lbl">Bàn chân (cm)</th>
+              <th>25.2</th>
+              <th>25.5</th>
+              <th>26.5</th>
+              <th>27</th>
+              <th>27.7</th>
+              <th>28.5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="size-lbl">Size US</td>
+              <td>7</td>
+              <td>7.5</td>
+              <td>8.5</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <td class="size-lbl">Size EU</td>
+              <td>39</td>
+              <td>40</td>
+              <td>41</td>
+              <td>42</td>
+              <td>43</td>
+              <td>44</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="size-tbl" id="sz-nu" style="display:none">
+          <thead>
+            <tr>
+              <th class="size-lbl">Bàn chân (cm)</th>
+              <th>23</th>
+              <th>24</th>
+              <th>24.5</th>
+              <th>25.2</th>
+              <th>25.5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="size-lbl">Size US</td>
+              <td>5.5</td>
+              <td>6.5</td>
+              <td>7</td>
+              <td>8</td>
+              <td>8.5</td>
+            </tr>
+            <tr>
+              <td class="size-lbl">Size EU</td>
+              <td>36</td>
+              <td>37</td>
+              <td>38</td>
+              <td>39</td>
+              <td>40</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-// Smooth scroll helper
-function scrollTo(sel) {
-  document.querySelector(sel)?.scrollIntoView({behavior:'smooth'});
-}
+  <!-- DEALERS -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Hệ thống phân phối</span>
+        <h2 class="sec-title">Đại Lý Triển Khai<br>Chương Trình</h2>
+        <p class="sec-desc">Chọn tỉnh/thành phố để xem điểm bán gần bạn</p>
+      </div>
 
-// Countdown (target: 2026-08-05 23:59:59)
-const endDate = new Date('2026-08-05T23:59:59');
-function tick() {
-  const diff = Math.max(0, endDate - new Date());
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor(diff % 86400000 / 3600000);
-  const m = Math.floor(diff % 3600000 / 60000);
-  const s = Math.floor(diff % 60000 / 1000);
-  const set = (id, val, prev) => {
-    const el = document.getElementById(id);
-    const str = String(val).padStart(2,'0');
-    if (el.textContent !== str) {
-      el.classList.remove('flip');
-      void el.offsetWidth;
-      el.classList.add('flip');
-      el.textContent = str;
+      <!-- Search -->
+      <div class="search-wrap">
+        <span class="search-ico">🔍</span>
+        <input class="search-input" type="text" id="dealer-input" placeholder="Tìm theo tên đại lý hoặc tỉnh/thành..."
+          oninput="dealerSearch(this.value)">
+      </div>
+
+      <!-- Province chips — tự động tạo từ Google Sheets -->
+      <div class="province-chips" id="province-chips">
+        <div class="chips-loading">Đang tải danh sách đại lý...</div>
+      </div>
+
+      <!-- Store panel: hiện khi click tỉnh -->
+      <div class="store-panel" id="store-panel"></div>
+
+      <!-- Fallback data (dùng khi Sheets không load được) -->
+      <div style="display:none" id="dealer-data">
+
+        <!-- Thanh Hóa -->
+        <div class="province-group" data-p="thanhhoa">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">Thanh Hóa</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">TP Sầm Sơn</div>
+            <div class="store-list">
+              <div class="store-card" data-q="tùng anh sport 173 lê lợi trường sơn sầm sơn thanh hóa">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">Tùng Anh Sport</div>
+                  <div class="store-addr">173 Lê Lợi, Trường Sơn, TP Sầm Sơn</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=173+L%C3%AA+L%E1%BB%A3i+S%E1%BA%A7m+S%C6%A1n+Thanh+H%C3%B3a+Vi%E1%BB%87t+Nam"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lâm Đồng -->
+        <div class="province-group" data-p="lamdong">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">Lâm Đồng</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">TP Bảo Lộc</div>
+            <div class="store-list">
+              <div class="store-card" data-q="tâm sport 205 hà giang bảo lộc lâm đồng">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">Tâm Sport</div>
+                  <div class="store-addr">205 Hà Giang, TP Bảo Lộc</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=205+H%C3%A0+Giang+B%E1%BA%A3o+L%E1%BB%99c+L%C3%A2m+%C4%90%E1%BB%93ng"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TP Hồ Chí Minh -->
+        <div class="province-group" data-p="hcm">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">TP Hồ Chí Minh</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">Quận Gò Vấp</div>
+            <div class="store-list">
+              <div class="store-card" data-q="đức tài sport 210 phạm văn chiêu gò vấp hồ chí minh">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">Đức Tài Sport</div>
+                  <div class="store-addr">210 Phạm Văn Chiêu, Thới Tây Hội, Q. Gò Vấp</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=210+Ph%E1%BA%A1m+V%C4%83n+Chi%C3%AAu+G%C3%B2+V%E1%BA%A5p+H%E1%BB%93+Ch%C3%AD+Minh"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đồng Tháp -->
+        <div class="province-group" data-p="dongthap">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">Đồng Tháp</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">TP Cao Lãnh</div>
+            <div class="store-list">
+              <div class="store-card" data-q="minh luận sport 235a hùng vương cao lãnh đồng tháp">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">Minh Luận Sport</div>
+                  <div class="store-addr">235A Hùng Vương, Phường 1, TP Cao Lãnh</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=235A+H%C3%B9ng+V%C6%B0%C6%A1ng+Cao+L%C3%A3nh+%C4%90%E1%BB%93ng+Th%C3%A1p"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đà Nẵng -->
+        <div class="province-group" data-p="danang">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">Đà Nẵng</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">Quận Hải Châu</div>
+            <div class="store-list">
+              <div class="store-card" data-q="11 sport 24 tố hữu hòa cường nam hải châu đà nẵng">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">11 Sport</div>
+                  <div class="store-addr">24 Tố Hữu, Hòa Cường Nam, Q. Hải Châu</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=24+T%E1%BB%91+H%E1%BB%AFu+H%C3%B2a+C%C6%B0%E1%BB%9Dng+Nam+H%E1%BA%A3i+Ch%C3%A2u+%C4%90%C3%A0+N%E1%BA%B5ng"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bình Định -->
+        <div class="province-group" data-p="binhdinh">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">Bình Định</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">TP Quy Nhơn</div>
+            <div class="store-list">
+              <div class="store-card" data-q="tgcb 274 nguyễn thị định quy nhơn bình định">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">TGCB</div>
+                  <div class="store-addr">274 Nguyễn Thị Định, TP Quy Nhơn</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=274+Nguy%E1%BB%85n+Th%E1%BB%8B+%C4%90%E1%BB%8Bnh+Quy+Nh%C6%A1n+B%C3%ACnh+%C4%90%E1%BB%8Bnh"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tuyên Quang -->
+        <div class="province-group" data-p="tuyenquang">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">Tuyên Quang</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">TP Tuyên Quang</div>
+            <div class="store-list">
+              <div class="store-card" data-q="dũng giang 285 quang trung tuyên quang">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">Dũng Giang</div>
+                  <div class="store-addr">285 Quang Trung, TP Tuyên Quang</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=285+Quang+Trung+Tuy%C3%AAn+Quang"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đắk Lắk -->
+        <div class="province-group" data-p="daklak">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">Đắk Lắk</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">Tuy Hòa</div>
+            <div class="store-list">
+              <div class="store-card" data-q="phước hiền sport 291 trường chinh tuy hòa đắk lắk">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">Phước Hiền Sport</div>
+                  <div class="store-addr">291 Trường Chinh, Tuy Hòa, Đắk Lắk</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=291+Tr%C6%B0%E1%BB%9Dng+Chinh+Tuy+H%C3%B2a+%C4%90%E1%BA%AFk+L%E1%BA%AFk"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sơn La -->
+        <div class="province-group" data-p="sonla">
+          <div class="province-hdr" onclick="toggleProvince(this)">
+            <span>📍</span>
+            <span class="province-name">Sơn La</span>
+            <span class="province-count">1 điểm</span>
+            <span class="province-chevron">▼</span>
+          </div>
+          <div class="province-body">
+            <div class="district-lbl">TX Sơn La</div>
+            <div class="store-list">
+              <div class="store-card" data-q="sơn la sport 299 chu văn thịnh sơn la">
+                <div class="store-ico">🏪</div>
+                <div class="store-info">
+                  <div class="store-name">Sơn La Sport</div>
+                  <div class="store-addr">299 Đường Chu Văn Thịnh, TX Sơn La</div>
+                </div>
+                <a class="map-btn"
+                  href="https://www.google.com/maps/search/?api=1&query=299+Chu+V%C4%83n+Th%E1%BB%8Bnh+S%C6%A1n+La"
+                  target="_blank" rel="noopener">🗺️ Bản đồ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end dealer-data -->
+      <div class="no-results" id="no-res">Không tìm thấy đại lý phù hợp</div>
+    </div>
+  </section>
+
+  <div class="grad-divider"></div>
+
+  <!-- FORM -->
+  <section class="form-bg" id="dang-ky">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:36px">
+        <span class="sec-tag">Đăng ký ngay</span>
+        <h2 class="sec-title">Để Lại Thông Tin<br>Nhận Tư Vấn Miễn Phí</h2>
+        <p class="sec-desc">Nhân viên liên hệ trong vòng 24 giờ để hỗ trợ bạn đổi giày</p>
+      </div>
+      <div class="form-wrap reveal">
+        <div id="form-content">
+          <div class="form-hdr">
+            <div class="form-title">🎯 Đăng Ký Đổi Giày</div>
+            <p class="form-desc">Điền thông tin bên dưới để nhận ưu đãi</p>
+          </div>
+          <form onsubmit="submitForm(event)">
+            <div class="form-group">
+              <label class="form-label">Họ và Tên *</label>
+              <input class="form-input" id="f-name" type="text" placeholder="Nguyễn Văn A">
+              <div class="err-msg" id="e-name">Vui lòng nhập họ tên (ít nhất 2 ký tự)</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Số điện thoại *</label>
+              <input class="form-input" id="f-phone" type="tel" placeholder="0912 345 678">
+              <div class="err-msg" id="e-phone">Số điện thoại không hợp lệ (10 số, bắt đầu bằng 0)</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tỉnh / Thành phố *</label>
+              <select class="form-select" id="f-city">
+                <option value="">-- Chọn tỉnh/thành phố --</option>
+                <option>Hà Nội</option>
+                <option>TP Hồ Chí Minh</option>
+                <option>Đà Nẵng</option>
+                <option>Thanh Hóa</option>
+                <option>Lâm Đồng</option>
+                <option>Đồng Tháp</option>
+                <option>Bình Định</option>
+                <option>Tuyên Quang</option>
+                <option>Đắk Lắk</option>
+                <option>Sơn La</option>
+                <option>Khác</option>
+              </select>
+              <div class="err-msg" id="e-city">Vui lòng chọn tỉnh/thành phố</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tình trạng giày cũ</label>
+              <select class="form-select" id="f-cond">
+                <option value="">-- Chọn tình trạng --</option>
+                <option value="rach">Giày rách (hỗ trợ 500K)</option>
+                <option value="mon">Giày mòn đế (hỗ trợ 700K)</option>
+                <option value="chua-biet">Chưa biết, cần tư vấn</option>
+              </select>
+            </div>
+            <button type="submit" class="form-btn" id="sub-btn">ĐẶT HÀNG NGAY 🎯</button>
+          </form>
+          <p class="form-note">(Sau khi đăng ký sẽ có nhân viên liên hệ để hỗ trợ)</p>
+        </div>
+        <div class="form-success" id="form-ok">
+          <div class="suc-ico">🎉</div>
+          <div class="suc-title">Đăng Ký Thành Công!</div>
+          <p class="suc-msg" style="margin-top:10px">Cảm ơn bạn đã quan tâm đến chương trình.<br>Nhân viên sẽ liên hệ
+            trong vòng <strong style="color:#fff">24 giờ</strong>.</p>
+          <div style="margin-top:22px">
+            <a href="tel:0964890686" class="btn btn-red lg">📞 Gọi ngay: 0964 890 686</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="f-logo"><span>LOTTO</span>SPORTS VIỆT NAM</div>
+          <div class="f-company">CÔNG TY CỔ PHẦN NERO</div>
+          <p class="f-about">Thương hiệu giày thể thao Ý với hơn 50 năm lịch sử. Chính thức phân phối tại Việt Nam bởi
+            Công ty Cổ phần NERO.</p>
+        </div>
+        <div>
+          <div class="contact-item">📍 <span>NV1-19 KĐT Dream Town, Đường 70, Phường Tứ Liêm, Hà Nội</span></div>
+          <div class="contact-item">📞 <a href="tel:0964890686">0964 890 686</a></div>
+          <div class="contact-item">✉️ <a href="mailto:contact@nero.com.vn">contact@nero.com.vn</a></div>
+          <div class="contact-item">🌐 <a href="https://lottosports.vn" target="_blank"
+              rel="noopener">lottosports.vn</a></div>
+        </div>
+      </div>
+      <div class="f-bottom">© 2026 Lotto Sport Viet Nam. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- FLOATING -->
+  <a href="tel:0964890686" class="phone-float" title="Gọi ngay">📞</a>
+  <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Lên đầu">↑</button>
+
+  <script>
+    // Header + back-to-top
+    const hdr = document.getElementById('hdr');
+    const bt = document.getElementById('back-top');
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('scrolled', window.scrollY > 80);
+      bt.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // Smooth scroll helper
+    function scrollTo(sel) {
+      document.querySelector(sel)?.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-  set('cd-d', d); set('cd-h', h); set('cd-m', m); set('cd-s', s);
-}
-tick(); setInterval(tick, 1000);
 
-// Reveal on scroll
-const revealEls = document.querySelectorAll('.reveal');
-const revObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-}, {threshold: 0.12});
-revealEls.forEach(el => revObs.observe(el));
+    // Countdown (target: 2026-08-05 23:59:59)
+    const endDate = new Date('2026-08-05T23:59:59');
+    function tick() {
+      const diff = Math.max(0, endDate - new Date());
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff % 86400000 / 3600000);
+      const m = Math.floor(diff % 3600000 / 60000);
+      const s = Math.floor(diff % 60000 / 1000);
+      const set = (id, val, prev) => {
+        const el = document.getElementById(id);
+        const str = String(val).padStart(2, '0');
+        if (el.textContent !== str) {
+          el.classList.remove('flip');
+          void el.offsetWidth;
+          el.classList.add('flip');
+          el.textContent = str;
+        }
+      };
+      set('cd-d', d); set('cd-h', h); set('cd-m', m); set('cd-s', s);
+    }
+    tick(); setInterval(tick, 1000);
 
-// Stat counters
-const statEls = document.querySelectorAll('.stat-n[data-target]');
-const statObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting || e.target.dataset.done) return;
-    e.target.dataset.done = '1';
-    const target = +e.target.dataset.target;
-    const start = performance.now();
-    const dur = 1400;
-    const run = now => {
-      const p = Math.min((now - start) / dur, 1);
-      e.target.textContent = Math.round((1 - Math.pow(1-p, 3)) * target);
-      if (p < 1) requestAnimationFrame(run);
-      else e.target.textContent = target;
-    };
-    requestAnimationFrame(run);
-    statObs.unobserve(e.target);
-  });
-}, {threshold: 0.5});
-statEls.forEach(el => statObs.observe(el));
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revObs.observe(el));
 
-// FAQ
-function toggleFaq(btn) {
-  const item = btn.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => {
-    i.classList.remove('open');
-    i.querySelector('.faq-a').classList.remove('open');
-  });
-  if (!isOpen) {
-    item.classList.add('open');
-    item.querySelector('.faq-a').classList.add('open');
-  }
-}
+    // Stat counters
+    const statEls = document.querySelectorAll('.stat-n[data-target]');
+    const statObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting || e.target.dataset.done) return;
+        e.target.dataset.done = '1';
+        const target = +e.target.dataset.target;
+        const start = performance.now();
+        const dur = 1400;
+        const run = now => {
+          const p = Math.min((now - start) / dur, 1);
+          e.target.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+          if (p < 1) requestAnimationFrame(run);
+          else e.target.textContent = target;
+        };
+        requestAnimationFrame(run);
+        statObs.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+    statEls.forEach(el => statObs.observe(el));
 
-// Size tabs
-function switchSize(g, btn) {
-  document.querySelectorAll('.size-tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('sz-nam').style.display = g === 'nam' ? 'table' : 'none';
-  document.getElementById('sz-nu').style.display = g === 'nu' ? 'table' : 'none';
-}
+    // FAQ
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').classList.remove('open');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-a').classList.add('open');
+      }
+    }
 
-// ═══════════════════════════════════════════════════════════
-// CẤU HÌNH GOOGLE SHEETS — Team MKT chỉ cần cập nhật phần này
-// ═══════════════════════════════════════════════════════════
-// Hướng dẫn lấy link:
-//   1. Mở Google Sheet
-//   2. File → Chia sẻ → Xuất bản lên web
-//   3. Chọn sheet "Dai_ly" → Định dạng: CSV → Xuất bản
-//   4. Dán link vào SHEET_DAI_LY bên dưới
-const SHEET_DAI_LY = 'PASTE_YOUR_SHEET_CSV_LINK_HERE';
-// ═══════════════════════════════════════════════════════════
+    // Size tabs
+    function switchSize(g, btn) {
+      document.querySelectorAll('.size-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('sz-nam').style.display = g === 'nam' ? 'table' : 'none';
+      document.getElementById('sz-nu').style.display = g === 'nu' ? 'table' : 'none';
+    }
 
-// Lưu toàn bộ data đại lý sau khi fetch
-let _dealerData = {};
+    // ═══════════════════════════════════════════════════════════
+    // CẤU HÌNH GOOGLE SHEETS — Team MKT chỉ cần cập nhật phần này
+    // ═══════════════════════════════════════════════════════════
+    // Hướng dẫn lấy link:
+    //   1. Mở Google Sheet
+    //   2. File → Chia sẻ → Xuất bản lên web
+    //   3. Chọn sheet "Dai_ly" → Định dạng: CSV → Xuất bản
+    //   4. Dán link vào SHEET_DAI_LY bên dưới
+    // ═══════════════════════════════════════════════════════════
+    const SHEET_DAI_LY = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTomKzWXP5ugkRVrvR4gSxlLrJRLvi5Eo1JDb2jfE8QweAYaK70eKaEn8kDzIU_EnkpD_2YIXkL92my/pub?output=csv';
 
-// Parse CSV (xử lý đúng dấu phẩy trong ngoặc kép)
-function parseCSV(str) {
-  const lines = str.split(/\r?\n/).filter(l => l.trim());
-  if (lines.length < 2) return [];
-  const headers = splitCSVLine(lines[0]);
-  return lines.slice(1).map(line => {
-    const vals = splitCSVLine(line);
-    const obj = {};
-    headers.forEach((h, i) => obj[h.trim()] = (vals[i] || '').trim());
-    return obj;
-  }).filter(r => r.ten_dai_ly); // bỏ dòng trống
-}
+    // Lưu toàn bộ data đại lý sau khi fetch
+    let _dealerData = {};
 
-function splitCSVLine(line) {
-  const res = []; let cur = '', q = false;
-  for (const c of line) {
-    if (c === '"') { q = !q; continue; }
-    if (c === ',' && !q) { res.push(cur); cur = ''; continue; }
-    cur += c;
-  }
-  res.push(cur);
-  return res;
-}
+    // Parse CSV (xử lý đúng dấu phẩy trong ngoặc kép)
+    function parseCSV(str) {
+      const lines = str.split(/\r?\n/).filter(l => l.trim());
+      if (lines.length < 2) return [];
+      const headers = splitCSVLine(lines[0]);
+      return lines.slice(1).map(line => {
+        const vals = splitCSVLine(line);
+        const obj = {};
+        headers.forEach((h, i) => obj[h.trim()] = (vals[i] || '').trim());
+        return obj;
+      }).filter(r => r.ten_dai_ly); // bỏ dòng trống
+    }
 
-// Nhóm đại lý theo tỉnh
-function groupByProvince(rows) {
-  const groups = {};
-  rows.forEach(r => {
-    if (!r.tinh || !r.ten_tinh) return;
-    if (!groups[r.tinh]) groups[r.tinh] = { ten_tinh: r.ten_tinh, stores: [] };
-    groups[r.tinh].stores.push(r);
-  });
-  return groups;
-}
+    function splitCSVLine(line) {
+      const res = []; let cur = '', q = false;
+      for (const c of line) {
+        if (c === '"') { q = !q; continue; }
+        if (c === ',' && !q) { res.push(cur); cur = ''; continue; }
+        cur += c;
+      }
+      res.push(cur);
+      return res;
+    }
 
-// Tạo HTML panel danh sách cửa hàng của 1 tỉnh
-function buildStorePanel(ten_tinh, stores) {
-  const districts = {};
-  stores.forEach(s => {
-    const d = s.quan_huyen || 'Khác';
-    if (!districts[d]) districts[d] = [];
-    districts[d].push(s);
-  });
-  let html = `<div class="store-panel-hdr">
+    // Nhóm đại lý theo tỉnh
+    function groupByProvince(rows) {
+      const groups = {};
+      rows.forEach(r => {
+        if (!r.tinh || !r.ten_tinh) return;
+        if (!groups[r.tinh]) groups[r.tinh] = { ten_tinh: r.ten_tinh, stores: [] };
+        groups[r.tinh].stores.push(r);
+      });
+      return groups;
+    }
+
+    // Tạo HTML panel danh sách cửa hàng của 1 tỉnh
+    function buildStorePanel(ten_tinh, stores) {
+      const districts = {};
+      stores.forEach(s => {
+        const d = s.quan_huyen || 'Khác';
+        if (!districts[d]) districts[d] = [];
+        districts[d].push(s);
+      });
+      let html = `<div class="store-panel-hdr">
     <span>📍</span>
     <span class="store-panel-title">${ten_tinh}</span>
     <span class="store-panel-sub">${stores.length} điểm bán</span>
   </div>`;
-  Object.entries(districts).forEach(([dist, list]) => {
-    html += `<div class="district-lbl">${dist}</div><div class="store-list">`;
-    list.forEach(s => {
-      html += `<div class="store-card">
+      Object.entries(districts).forEach(([dist, list]) => {
+        html += `<div class="district-lbl">${dist}</div><div class="store-list">`;
+        list.forEach(s => {
+          html += `<div class="store-card">
         <div class="store-ico">🏪</div>
         <div class="store-info">
           <div class="store-name">${s.ten_dai_ly}</div>
@@ -1104,138 +2484,139 @@ function buildStorePanel(ten_tinh, stores) {
         </div>
         <a class="map-btn" href="${s.maps_url || '#'}" target="_blank" rel="noopener">🗺️ Bản đồ</a>
       </div>`;
-    });
-    html += '</div>';
-  });
-  return html;
-}
+        });
+        html += '</div>';
+      });
+      return html;
+    }
 
-// Render chip tỉnh từ data
-function renderChips(groups) {
-  const el = document.getElementById('province-chips');
-  el.innerHTML = Object.entries(groups).map(([key, data]) =>
-    `<button class="pchip" data-p="${key}" onclick="selectProvince('${key}',this)">
+    // Render chip tỉnh từ data
+    function renderChips(groups) {
+      const el = document.getElementById('province-chips');
+      el.innerHTML = Object.entries(groups).map(([key, data]) =>
+        `<button class="pchip" data-p="${key}" onclick="selectProvince('${key}',this)">
        <span class="pchip-name">${data.ten_tinh}</span>
        <span class="pchip-count">${data.stores.length}</span>
      </button>`
-  ).join('');
-}
-
-// Click chip tỉnh
-function selectProvince(key, btn) {
-  const panel = document.getElementById('store-panel');
-  const isActive = btn.classList.contains('active');
-  document.querySelectorAll('.pchip').forEach(c => c.classList.remove('active'));
-  if (isActive) { panel.classList.remove('show'); panel.innerHTML = ''; return; }
-  btn.classList.add('active');
-  const data = _dealerData[key];
-  if (!data) return;
-  panel.innerHTML = buildStorePanel(data.ten_tinh, data.stores);
-  panel.classList.add('show');
-  document.getElementById('dealer-input').value = '';
-  document.getElementById('no-res').style.display = 'none';
-  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
-}
-
-// Tìm kiếm đại lý
-function dealerSearch(q) {
-  q = q.toLowerCase().trim();
-  const panel = document.getElementById('store-panel');
-  const noRes = document.getElementById('no-res');
-  document.querySelectorAll('.pchip').forEach(c => c.classList.remove('active'));
-  if (!q) { panel.classList.remove('show'); panel.innerHTML = ''; noRes.style.display = 'none'; return; }
-  let html = '', total = 0;
-  Object.entries(_dealerData).forEach(([, data], i) => {
-    const provMatch = data.ten_tinh.toLowerCase().includes(q);
-    const matched = data.stores.filter(s =>
-      provMatch || s.ten_dai_ly.toLowerCase().includes(q) ||
-      s.dia_chi.toLowerCase().includes(q) || (s.quan_huyen||'').toLowerCase().includes(q)
-    );
-    if (matched.length) {
-      html += (i > 0 ? '<div style="margin-top:14px"></div>' : '') +
-              buildStorePanel(data.ten_tinh, matched);
-      total += matched.length;
+      ).join('');
     }
-  });
-  if (total) { panel.innerHTML = html; panel.classList.add('show'); noRes.style.display = 'none'; }
-  else { panel.classList.remove('show'); panel.innerHTML = ''; noRes.style.display = 'block'; }
-}
 
-// Lấy fallback từ #dealer-data (HTML cứng) nếu Sheets không load được
-function loadFallbackDealers() {
-  const groups = {};
-  document.querySelectorAll('#dealer-data [data-p]').forEach(group => {
-    const key = group.dataset.p;
-    const ten_tinh = group.querySelector('.province-name')?.textContent || key;
-    const stores = [...group.querySelectorAll('.store-card')].map(card => ({
-      ten_dai_ly: card.querySelector('.store-name')?.textContent || '',
-      dia_chi: card.querySelector('.store-addr')?.textContent || '',
-      quan_huyen: card.closest('.province-group')?.querySelector('.district-lbl')?.textContent || '',
-      maps_url: card.querySelector('.map-btn')?.href || '#'
-    }));
-    if (stores.length) groups[key] = { ten_tinh, stores };
-  });
-  _dealerData = groups;
-  renderChips(groups);
-}
+    // Click chip tỉnh
+    function selectProvince(key, btn) {
+      const panel = document.getElementById('store-panel');
+      const isActive = btn.classList.contains('active');
+      document.querySelectorAll('.pchip').forEach(c => c.classList.remove('active'));
+      if (isActive) { panel.classList.remove('show'); panel.innerHTML = ''; return; }
+      btn.classList.add('active');
+      const data = _dealerData[key];
+      if (!data) return;
+      panel.innerHTML = buildStorePanel(data.ten_tinh, data.stores);
+      panel.classList.add('show');
+      document.getElementById('dealer-input').value = '';
+      document.getElementById('no-res').style.display = 'none';
+      setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    }
 
-// Load đại lý từ Google Sheets (tự động fallback nếu lỗi)
-async function loadDealers() {
-  if (!SHEET_DAI_LY || SHEET_DAI_LY.includes('PASTE_YOUR')) {
-    loadFallbackDealers(); return;
-  }
-  try {
-    const res = await fetch(SHEET_DAI_LY);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const csv = await res.text();
-    const rows = parseCSV(csv);
-    if (!rows.length) throw new Error('No data');
-    _dealerData = groupByProvince(rows);
-    renderChips(_dealerData);
-  } catch (e) {
-    console.warn('Sheets không tải được, dùng dữ liệu dự phòng:', e.message);
-    loadFallbackDealers();
-  }
-}
+    // Tìm kiếm đại lý
+    function dealerSearch(q) {
+      q = q.toLowerCase().trim();
+      const panel = document.getElementById('store-panel');
+      const noRes = document.getElementById('no-res');
+      document.querySelectorAll('.pchip').forEach(c => c.classList.remove('active'));
+      if (!q) { panel.classList.remove('show'); panel.innerHTML = ''; noRes.style.display = 'none'; return; }
+      let html = '', total = 0;
+      Object.entries(_dealerData).forEach(([, data], i) => {
+        const provMatch = data.ten_tinh.toLowerCase().includes(q);
+        const matched = data.stores.filter(s =>
+          provMatch || s.ten_dai_ly.toLowerCase().includes(q) ||
+          s.dia_chi.toLowerCase().includes(q) || (s.quan_huyen || '').toLowerCase().includes(q)
+        );
+        if (matched.length) {
+          html += (i > 0 ? '<div style="margin-top:14px"></div>' : '') +
+            buildStorePanel(data.ten_tinh, matched);
+          total += matched.length;
+        }
+      });
+      if (total) { panel.innerHTML = html; panel.classList.add('show'); noRes.style.display = 'none'; }
+      else { panel.classList.remove('show'); panel.innerHTML = ''; noRes.style.display = 'block'; }
+    }
 
-// Khởi động
-loadDealers();
+    // Lấy fallback từ #dealer-data (HTML cứng) nếu Sheets không load được
+    function loadFallbackDealers() {
+      const groups = {};
+      document.querySelectorAll('#dealer-data [data-p]').forEach(group => {
+        const key = group.dataset.p;
+        const ten_tinh = group.querySelector('.province-name')?.textContent || key;
+        const stores = [...group.querySelectorAll('.store-card')].map(card => ({
+          ten_dai_ly: card.querySelector('.store-name')?.textContent || '',
+          dia_chi: card.querySelector('.store-addr')?.textContent || '',
+          quan_huyen: card.closest('.province-group')?.querySelector('.district-lbl')?.textContent || '',
+          maps_url: card.querySelector('.map-btn')?.href || '#'
+        }));
+        if (stores.length) groups[key] = { ten_tinh, stores };
+      });
+      _dealerData = groups;
+      renderChips(groups);
+    }
 
-// Form
-function submitForm(e) {
-  e.preventDefault();
-  const name = document.getElementById('f-name');
-  const phone = document.getElementById('f-phone');
-  const city = document.getElementById('f-city');
-  let ok = true;
+    // Load đại lý từ Google Sheets (tự động fallback nếu lỗi)
+    async function loadDealers() {
+      if (!SHEET_DAI_LY || SHEET_DAI_LY.includes('PASTE_YOUR')) {
+        loadFallbackDealers(); return;
+      }
+      try {
+        const res = await fetch(SHEET_DAI_LY);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const csv = await res.text();
+        const rows = parseCSV(csv);
+        if (!rows.length) throw new Error('No data');
+        _dealerData = groupByProvince(rows);
+        renderChips(_dealerData);
+      } catch (e) {
+        console.warn('Sheets không tải được, dùng dữ liệu dự phòng:', e.message);
+        loadFallbackDealers();
+      }
+    }
 
-  const validate = (el, errId, test) => {
-    const err = document.getElementById(errId);
-    const pass = test(el.value.trim());
-    el.classList.toggle('err', !pass);
-    el.classList.toggle('ok', pass);
-    err.classList.toggle('show', !pass);
-    return pass;
-  };
+    // Khởi động
+    loadDealers();
 
-  ok = validate(name, 'e-name', v => v.length >= 2) & ok;
-  ok = validate(phone, 'e-phone', v => /^0[3-9]\d{8}$/.test(v.replace(/\s/g,''))) & ok;
-  if (!city.value) {
-    document.getElementById('e-city').classList.add('show');
-    ok = false;
-  } else {
-    document.getElementById('e-city').classList.remove('show');
-  }
+    // Form
+    function submitForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('f-name');
+      const phone = document.getElementById('f-phone');
+      const city = document.getElementById('f-city');
+      let ok = true;
 
-  if (!ok) return;
-  const btn = document.getElementById('sub-btn');
-  btn.textContent = 'Đang gửi...';
-  btn.disabled = true;
-  setTimeout(() => {
-    document.getElementById('form-content').style.display = 'none';
-    document.getElementById('form-ok').style.display = 'block';
-  }, 1200);
-}
-</script>
+      const validate = (el, errId, test) => {
+        const err = document.getElementById(errId);
+        const pass = test(el.value.trim());
+        el.classList.toggle('err', !pass);
+        el.classList.toggle('ok', pass);
+        err.classList.toggle('show', !pass);
+        return pass;
+      };
+
+      ok = validate(name, 'e-name', v => v.length >= 2) & ok;
+      ok = validate(phone, 'e-phone', v => /^0[3-9]\d{8}$/.test(v.replace(/\s/g, ''))) & ok;
+      if (!city.value) {
+        document.getElementById('e-city').classList.add('show');
+        ok = false;
+      } else {
+        document.getElementById('e-city').classList.remove('show');
+      }
+
+      if (!ok) return;
+      const btn = document.getElementById('sub-btn');
+      btn.textContent = 'Đang gửi...';
+      btn.disabled = true;
+      setTimeout(() => {
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('form-ok').style.display = 'block';
+      }, 1200);
+    }
+  </script>
 </body>
+
 </html>
