@@ -318,23 +318,22 @@
       .hero-banner-img {
         position: absolute !important;
         right: 0; top: 0; bottom: 0;
-        width: 52%;
+        width: 50%;
         height: 100% !important;
         order: 2
       }
 
       .hero-banner-img img {
-        object-fit: contain !important;
-        object-position: left center !important;
-        background: #0B1D11;
+        object-fit: cover !important;
+        object-position: 35% center !important;
       }
 
       .hero-banner-img::after {
-        background: linear-gradient(to right, #0B1D11 0%, rgba(11,29,17,.6) 35%, transparent 65%) !important
+        background: linear-gradient(to right, #0B1D11 0%, rgba(11,29,17,.7) 30%, transparent 60%) !important
       }
 
       .hero .container { order: 1; position: relative; z-index: 2 }
-      .hero-inner { text-align: left; padding-right: 52%; padding-top: 60px; padding-bottom: 60px }
+      .hero-inner { text-align: left; padding-left: 48px; padding-right: 54%; padding-top: 80px; padding-bottom: 80px }
     }
 
     /* ── LIGHT SECTIONS (white bg) ── */
