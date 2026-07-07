@@ -1748,10 +1748,11 @@
     /* ── MOBILE IMPROVEMENTS ── */
     @media(max-width:767px) {
       /* hero text readable on mobile */
-      .hero-inner { padding: 24px 20px 40px; text-align: center; display: flex; flex-direction: column; align-items: center }
-      .hero-title { font-size: clamp(36px, 10vw, 60px); letter-spacing: -1px; white-space: nowrap }
-      .value-box { align-self: center }
-      .hero-ctas { width: 100%; align-self: stretch }
+      .hero-inner { padding: 24px 20px 40px; text-align: center }
+      .hero-title { font-size: clamp(40px, 11vw, 60px); letter-spacing: -1px; text-align: center; width: 100% }
+      .hero-title .t1, .hero-title .t2 { text-align: center }
+      .value-box { margin-left: auto; margin-right: auto }
+      .hero-ctas { width: 100% }
 
       /* CTA buttons full-width on mobile */
       .hero-ctas { flex-direction: column; gap: 10px }
