@@ -321,7 +321,7 @@
         position: absolute !important;
         right: max(0px, calc((100vw - 960px) / 2));
         top: 50%; bottom: auto;
-        width: min(54vw, 518.4px);
+        width: min(58vw, 540px);
         height: auto !important;
         aspect-ratio: 16 / 9.6;
         transform: translateY(-50%);
@@ -340,9 +340,14 @@
         background: linear-gradient(to right, #0B1D11 0%, rgba(11,29,17,.5) 18%, transparent 42%) !important
       }
 
-      .hero .container { order: 1; position: relative; z-index: 2 }
-      .hero-inner { text-align: left; padding-left: 48px; padding-right: 56%; padding-top: 80px; padding-bottom: 80px }
+      .hero .container { order: 1; position: relative; z-index: 2; width: 100% }
+      .hero-inner { text-align: left; padding-left: 48px; padding-right: calc(min(58vw, 540px) + 20px); padding-top: 80px; padding-bottom: 80px }
       .hero-title { font-size: clamp(30px, 4.2vw, 64px); white-space: nowrap }
+      .value-box { padding: 16px 28px !important }
+      .value-amt { font-size: clamp(32px, 5.2vw, 64px) !important }
+      .hero-ctas { align-items: flex-start !important }
+      .btn-red.lg { font-size: 14px !important; padding: 14px 24px !important }
+      .btn-ghost { font-size: 13px !important }
     }
 
     /* ── LIGHT SECTIONS (white bg) ── */
