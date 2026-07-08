@@ -3140,11 +3140,20 @@
     loadTestimonials();
 
     // Form
+    // ═══════════════════════════════════════════════════════════
+    // CẤU HÌNH NHẬN LEAD — Form đăng ký đổi giày
+    // ═══════════════════════════════════════════════════════════
+    // Dán URL Web App của Google Apps Script (xem hướng dẫn deploy
+    // trong file HUONG_DAN_TEAM.md, mục "Nhận dữ liệu form đăng ký")
+    // ═══════════════════════════════════════════════════════════
+    const FORM_ENDPOINT = 'https://script.google.com/a/macros/nero.com.vn/s/AKfycbyqRETr3oBTen5CSVXJ3M4JPVA9t9Rrl90qyR1aolhX4Zg8JVEwOZhPCwuoPh-jWUXe/exec';
+
     function submitForm(e) {
       e.preventDefault();
       const name = document.getElementById('f-name');
       const phone = document.getElementById('f-phone');
       const city = document.getElementById('f-city');
+      const cond = document.getElementById('f-cond');
       let ok = true;
 
       const validate = (el, errId, test) => {
@@ -3169,10 +3178,29 @@
       const btn = document.getElementById('sub-btn');
       btn.textContent = 'Đang gửi...';
       btn.disabled = true;
-      setTimeout(() => {
+
+      const finish = () => {
         document.getElementById('form-content').style.display = 'none';
         document.getElementById('form-ok').style.display = 'block';
-      }, 1200);
+      };
+
+      if (!FORM_ENDPOINT || FORM_ENDPOINT.includes('PASTE_YOUR')) {
+        console.warn('FORM_ENDPOINT chưa cấu hình — dữ liệu KHÔNG được lưu. Xem HUONG_DAN_TEAM.md.');
+        setTimeout(finish, 1200);
+        return;
+      }
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({
+          ho_ten: name.value.trim(),
+          so_dien_thoai: phone.value.trim(),
+          tinh_thanh: city.value,
+          tinh_trang_giay: cond.value
+        })
+      }).then(finish).catch(finish);
     }
   </script>
 </body>

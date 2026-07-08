@@ -107,11 +107,53 @@ Tạo Google Sheet mới với **đúng các cột sau** (hàng đầu tiên là
 
 1. Mở Sheet → **File** → **Chia sẻ** → **Xuất bản lên web**
 2. Chọn sheet vừa tạo → định dạng **CSV** → **Xuất bản** → Copy link
-3. Mở file `LandingPage_ThuCuDoiMoi_Lotto2026.html`, tìm dòng:
+3. Mở file `index.html`, tìm dòng:
 ```javascript
 const SHEET_TRUOC_SAU = 'PASTE_YOUR_SHEET_CSV_LINK_HERE';
 ```
 4. Thay bằng link vừa copy, sau đó `git add`, `git commit`, `git push` như Bước 4-5 ở Phần 1
+
+---
+
+## PHẦN 1C — Nhận dữ liệu form đăng ký (Admin thực hiện 1 lần)
+
+Mặc định form đăng ký ở cuối trang **không lưu dữ liệu đi đâu cả** — cần nối vào
+Google Sheet qua Google Apps Script (miễn phí, không cần server riêng).
+
+### Bước 1: Đã có sẵn Sheet nhận dữ liệu
+
+Sheet **"Đăng Ký Đổi Giày - Lotto 2026"** đã được tạo sẵn với các cột:
+`thoi_gian | ho_ten | so_dien_thoai | tinh_thanh | tinh_trang_giay`
+
+### Bước 2: Gắn Apps Script vào Sheet
+
+1. Mở Sheet → **Extensions (Tiện ích mở rộng)** → **Apps Script**
+2. Xóa hết code mẫu, dán toàn bộ nội dung file `apps-script-form-dang-ky.gs`
+   (nằm cùng thư mục dự án) vào
+3. Bấm **Save** (biểu tượng đĩa mềm)
+
+### Bước 3: Deploy thành Web App
+
+1. Góc trên phải → **Deploy** → **New deployment**
+2. Bấm biểu tượng ⚙️ cạnh "Select type" → chọn **Web app**
+3. Cấu hình:
+   - **Execute as**: Me (tài khoản của bạn)
+   - **Who has access**: Anyone
+4. Bấm **Deploy** → lần đầu sẽ yêu cầu **Authorize access** → chọn tài khoản Google →
+   bấm **Advanced** → **Go to (tên project) (unsafe)** → **Allow**
+   (Cảnh báo "unsafe" là bình thường vì đây là script tự viết, chưa qua Google verify)
+5. Copy **Web app URL** dạng `https://script.google.com/macros/s/xxxxx/exec`
+
+### Bước 4: Dán URL vào code
+
+Mở file `index.html`, tìm dòng:
+```javascript
+const FORM_ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+```
+Thay bằng URL vừa copy, sau đó `git add`, `git commit`, `git push`.
+
+> **Lưu ý**: Mỗi khi sửa lại code trong Apps Script, phải tạo **New deployment** mới
+> (không phải Save) thì thay đổi mới có hiệu lực trên URL đang dùng.
 
 ---
 
