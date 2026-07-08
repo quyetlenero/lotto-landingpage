@@ -75,6 +75,46 @@ git push origin main
 
 ---
 
+## PHẦN 1B — Cài đặt ảnh "Trước & Sau Khi Đổi" (Admin thực hiện 1 lần)
+
+### Bước 1: Tạo Google Sheet ảnh trước/sau
+
+Tạo Google Sheet mới với **đúng các cột sau** (hàng đầu tiên là tên cột):
+
+| ten_khach | mau_giay | mo_ta | anh_truoc | anh_sau |
+|-----------|----------|-------|-----------|---------|
+| Anh Tuấn - Sầm Sơn | RAPTOR 300 | Đôi giày cũ mòn đế sau 2 năm sử dụng đã được lên đời thành RAPTOR 300 chính hãng | https://drive.google.com/... | https://drive.google.com/... |
+| Chị Lan - Bảo Lộc | MIRAGE 700 | Giày rách mũi được đổi ngay sang MIRAGE 700 mới cứng chỉ trong 15 phút | https://drive.google.com/... | https://drive.google.com/... |
+
+- **ten_khach**: Tên khách hàng hoặc mô tả ngắn (hiển thị dưới ảnh)
+- **mau_giay**: Mẫu giày mới khách đã đổi (không bắt buộc)
+- **mo_ta**: Câu chuyện / cảm nhận do team viết, hiển thị thành đoạn text nhỏ dưới cùng thẻ (không bắt buộc, để trống sẽ không hiện dòng này)
+- **anh_truoc**: Link ảnh đôi giày cũ — xem cách lấy link ở Bước 2
+- **anh_sau**: Link ảnh đôi giày mới
+
+> Nếu để trống `anh_truoc` hoặc `anh_sau`, khung ảnh sẽ hiện "Chưa có ảnh" thay vì lỗi.
+
+### Bước 2: Lấy link ảnh public
+
+1. Upload ảnh lên **Google Drive**
+2. Chuột phải ảnh → **Chia sẻ** → **Bất kỳ ai có đường liên kết** → Người xem
+3. Copy link, đổi định dạng thành link ảnh trực tiếp:
+   `https://drive.google.com/uc?export=view&id=FILE_ID`
+   (FILE_ID lấy từ link chia sẻ gốc, đoạn giữa `/d/` và `/view`)
+4. Dán link này vào cột `anh_truoc` / `anh_sau`
+
+### Bước 3: Xuất bản Sheet ra CSV và dán vào file HTML
+
+1. Mở Sheet → **File** → **Chia sẻ** → **Xuất bản lên web**
+2. Chọn sheet vừa tạo → định dạng **CSV** → **Xuất bản** → Copy link
+3. Mở file `LandingPage_ThuCuDoiMoi_Lotto2026.html`, tìm dòng:
+```javascript
+const SHEET_TRUOC_SAU = 'PASTE_YOUR_SHEET_CSV_LINK_HERE';
+```
+4. Thay bằng link vừa copy, sau đó `git add`, `git commit`, `git push` như Bước 4-5 ở Phần 1
+
+---
+
 ## PHẦN 2 — Team MKT cập nhật hàng ngày
 
 ### Thêm đại lý mới
@@ -101,6 +141,12 @@ git push origin main
 2. Tìm địa chỉ đại lý
 3. Bấm **Chia sẻ** → Copy link ngắn
 4. Dán vào cột `maps_url` trong Sheet
+
+### Thêm ảnh "Trước & Sau Khi Đổi" mới
+
+1. Mở Google Sheet ảnh trước/sau (đã có link sẵn, xem Phần 1B)
+2. Thêm 1 dòng mới: tên khách, mẫu giày, link ảnh trước, link ảnh sau
+3. **Lưu là xong** — trang tự cập nhật khi người dùng load lại
 
 ---
 

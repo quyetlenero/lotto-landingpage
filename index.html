@@ -1071,6 +1071,145 @@
       font-style: italic
     }
 
+    /* ── TRƯỚC & SAU ── */
+    .ts-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px
+    }
+
+    @media(min-width:768px) {
+      .ts-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    .ts-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all .3s
+    }
+
+    .ts-card:hover {
+      border-color: var(--red);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(214, 40, 40, .18)
+    }
+
+    .ts-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative
+    }
+
+    .ts-frame {
+      position: relative;
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, #1C2338, #2A3352);
+      overflow: hidden
+    }
+
+    .ts-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .ts-frame-ph {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--gray);
+      font-size: 10px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: .5px
+    }
+
+    .ts-frame-ph .ico {
+      font-size: 24px;
+      opacity: .7
+    }
+
+    .ts-tag {
+      position: absolute;
+      top: 8px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 5px;
+      color: #fff;
+      z-index: 2
+    }
+
+    .ts-tag.before {
+      left: 8px;
+      background: rgba(0, 0, 0, .55)
+    }
+
+    .ts-tag.after {
+      right: 8px;
+      background: var(--green)
+    }
+
+    .ts-arrow {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 28px;
+      height: 28px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      z-index: 3;
+      box-shadow: 0 0 0 4px var(--navy-card)
+    }
+
+    .ts-body {
+      padding: 14px 16px
+    }
+
+    .ts-name {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px
+    }
+
+    .ts-model {
+      font-size: 12px;
+      color: var(--gray)
+    }
+
+    .ts-desc {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .ts-empty {
+      grid-column: 1/-1;
+      text-align: center;
+      color: var(--gray);
+      font-size: 13px;
+      padding: 30px 0
+    }
+
     /* ── WARRANTY ── */
     .warranty-bg {
       background: var(--navy-mid);
@@ -2299,6 +2438,21 @@
     </div>
   </section>
 
+  <!-- TRƯỚC & SAU (BEFORE/AFTER) -->
+  <section class="section" id="truoc-sau">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sec-tag">Thực tế khách hàng</span>
+        <h2 class="sec-title">Trước & Sau Khi Đổi</h2>
+        <p class="sec-desc">Những đôi giày cũ đã được lên đời tại các đại lý Lotto trên toàn quốc</p>
+      </div>
+      <div class="ts-grid" id="ts-grid">
+        <div class="ts-empty">Đang tải hình ảnh...</div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- FAQ -->
   <section class="section section-light">
     <div class="container">
@@ -2923,6 +3077,20 @@
     // ═══════════════════════════════════════════════════════════
     const SHEET_DAI_LY = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTomKzWXP5ugkRVrvR4gSxlLrJRLvi5Eo1JDb2jfE8QweAYaK70eKaEn8kDzIU_EnkpD_2YIXkL92my/pub?output=csv';
 
+    // ═══════════════════════════════════════════════════════════
+    // CẤU HÌNH GOOGLE SHEETS — Ảnh "Trước & Sau khi đổi"
+    // ═══════════════════════════════════════════════════════════
+    // Tạo Google Sheet mới với các cột: ten_khach | mau_giay | anh_truoc | anh_sau
+    //   - ten_khach : Tên khách hàng (VD: "Anh Tuấn - Sầm Sơn")
+    //   - mau_giay  : Mẫu giày mới đã đổi (VD: "RAPTOR 300")
+    //   - anh_truoc : Link ảnh đôi giày cũ (upload ảnh lên Google Drive/Sheet
+    //                 rồi lấy link public, hoặc dùng link ảnh trên web)
+    //   - anh_sau   : Link ảnh đôi giày mới
+    // Sau đó: File → Chia sẻ → Xuất bản lên web → CSV → dán link vào bên dưới
+    // ═══════════════════════════════════════════════════════════
+    const SHEET_TRUOC_SAU = 'https://docs.google.com/spreadsheets/d/1J_-Ek-yDegFB3PrxxH1fTTp_L21tf-AD93_OgK0SjzI/export?format=csv&gid=1723334276';
+
+
     // Lưu toàn bộ data đại lý sau khi fetch
     let _dealerData = {};
 
@@ -2936,7 +3104,7 @@
         const obj = {};
         headers.forEach((h, i) => obj[h.trim()] = (vals[i] || '').trim());
         return obj;
-      }).filter(r => r.ten_dai_ly); // bỏ dòng trống
+      }).filter(r => Object.values(r).some(v => v)); // bỏ dòng trống
     }
 
     function splitCSVLine(line) {
@@ -3079,8 +3247,75 @@
       }
     }
 
+    // Tạo 1 khung ảnh (trước hoặc sau)
+    function buildTsFrame(url, label, altText) {
+      const tagClass = label === 'TRƯỚC' ? 'before' : 'after';
+      if (url) {
+        return `<div class="ts-frame">
+        <span class="ts-tag ${tagClass}">${label}</span>
+        <img src="${url}" alt="${altText}" loading="lazy">
+      </div>`;
+      }
+      return `<div class="ts-frame">
+      <span class="ts-tag ${tagClass}">${label}</span>
+      <div class="ts-frame-ph"><span class="ico">🖼️</span><span>Chưa có ảnh</span></div>
+    </div>`;
+    }
+
+    // Tạo 1 thẻ trước/sau
+    function buildTsCard(row) {
+      const name = row.ten_khach || 'Khách hàng Lotto';
+      const model = row.mau_giay || '';
+      const desc = row.mo_ta || '';
+      return `<div class="ts-card">
+      <div class="ts-imgs">
+        ${buildTsFrame(row.anh_truoc, 'TRƯỚC', name + ' - giày cũ')}
+        ${buildTsFrame(row.anh_sau, 'SAU', name + ' - giày mới')}
+        <div class="ts-arrow">→</div>
+      </div>
+      <div class="ts-body">
+        <div class="ts-name">${name}</div>
+        ${model ? `<div class="ts-model">Đổi sang ${model}</div>` : ''}
+        ${desc ? `<div class="ts-desc">${desc}</div>` : ''}
+      </div>
+    </div>`;
+    }
+
+    function renderTsGrid(rows) {
+      const el = document.getElementById('ts-grid');
+      if (!rows.length) {
+        el.innerHTML = '<div class="ts-empty">Chưa có hình ảnh nào. Thêm dữ liệu vào Google Sheet để hiển thị tại đây.</div>';
+        return;
+      }
+      el.innerHTML = rows.map(buildTsCard).join('');
+    }
+
+    // Load ảnh trước/sau từ Google Sheets
+    async function loadTruocSau() {
+      const el = document.getElementById('ts-grid');
+      if (!SHEET_TRUOC_SAU || SHEET_TRUOC_SAU.includes('PASTE_YOUR')) {
+        el.innerHTML = '<div class="ts-empty">Chưa kết nối Google Sheet. Xem hướng dẫn trong file HUONG_DAN_TEAM để thêm ảnh trước/sau.</div>';
+        return;
+      }
+      try {
+        const res = await fetch(SHEET_TRUOC_SAU);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const csv = await res.text();
+        const rows = parseCSV(csv);
+        renderTsGrid(rows);
+      } catch (e) {
+        console.warn('Không tải được ảnh trước/sau:', e.message);
+        el.innerHTML = '<div class="ts-empty">Không tải được hình ảnh. Vui lòng thử lại sau.</div>';
+      }
+    }
+
     // Khởi động
     loadDealers();
+    loadTruocSau();
+
+    // Khởi động
+    loadDealers();
+    loadTruocSau();
 
     // Form
     function submitForm(e) {
