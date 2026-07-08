@@ -310,24 +310,32 @@
     .hero-banner-img { order: 1 }
 
     @media(min-width:768px) {
+      /* true 2-column CSS Grid: text and image are real grid tracks,
+         so they can never overlap regardless of viewport width */
       .hero {
-        flex-direction: row !important;
+        display: grid !important;
+        grid-template-columns: minmax(280px, 400px) minmax(0, 810px) 1fr;
+        column-gap: 56px;
         align-items: center !important;
         min-height: 100vh !important;
+        padding: 90px 0 90px 48px;
         position: relative !important
       }
 
+      .hero .container {
+        grid-column: 1; grid-row: 1; order: initial;
+        width: auto; max-width: none; margin: 0; padding: 0;
+        position: relative; z-index: 2
+      }
+
       .hero-banner-img {
-        position: absolute !important;
-        right: max(0px, calc((100vw - 960px) / 2));
-        top: 50%; bottom: auto;
-        width: min(58vw, 540px);
+        grid-column: 2; grid-row: 1; order: initial;
+        position: relative !important;
+        width: 100% !important;
         height: auto !important;
-        aspect-ratio: 16 / 9.6;
-        transform: translateY(-50%);
+        aspect-ratio: 16 / 10.5;
         border-radius: 16px;
-        overflow: hidden;
-        order: 2
+        overflow: hidden
       }
 
       .hero-banner-img img {
@@ -337,16 +345,15 @@
       }
 
       .hero-banner-img::after {
-        background: linear-gradient(to right, #0B1D11 0%, rgba(11,29,17,.5) 18%, transparent 42%) !important
+        background: linear-gradient(115deg, rgba(11,29,17,.25) 0%, transparent 26%) !important
       }
 
-      .hero .container { order: 1; position: relative; z-index: 2; width: 100% }
-      .hero-inner { text-align: left; padding-left: 48px; padding-right: calc(min(58vw, 540px) + 20px); padding-top: 80px; padding-bottom: 80px }
-      .hero-title { font-size: clamp(30px, 4.2vw, 64px); white-space: nowrap }
-      .value-box { padding: 16px 28px !important }
-      .value-amt { font-size: clamp(32px, 5.2vw, 64px) !important }
+      .hero-inner { text-align: left; padding: 0 }
+      .hero-title { font-size: clamp(30px, 3.4vw, 44px); white-space: nowrap }
+      .value-box { padding: 16px 26px !important }
+      .value-amt { font-size: clamp(32px, 4.6vw, 56px) !important }
       .hero-ctas { align-items: flex-start !important }
-      .btn-red.lg { font-size: 14px !important; padding: 14px 24px !important }
+      .btn-red.lg { font-size: 14px !important; padding: 14px 22px !important }
       .btn-ghost { font-size: 13px !important }
     }
 
