@@ -314,22 +314,22 @@
          so they can never overlap regardless of viewport width */
       .hero {
         display: grid !important;
-        grid-template-columns: minmax(280px, 400px) minmax(0, 810px) 1fr;
+        grid-template-columns: minmax(24px, 1fr) minmax(280px, 400px) minmax(0, 972px) minmax(24px, 1fr);
         column-gap: 56px;
         align-items: center !important;
         min-height: 100vh !important;
-        padding: 90px 0 90px 48px;
+        padding: 90px 0;
         position: relative !important
       }
 
       .hero .container {
-        grid-column: 1; grid-row: 1; order: initial;
+        grid-column: 2; grid-row: 1; order: initial;
         width: auto; max-width: none; margin: 0; padding: 0;
         position: relative; z-index: 2
       }
 
       .hero-banner-img {
-        grid-column: 2; grid-row: 1; order: initial;
+        grid-column: 3; grid-row: 1; order: initial;
         position: relative !important;
         width: 100% !important;
         height: auto !important;
