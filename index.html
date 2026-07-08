@@ -319,23 +319,28 @@
 
       .hero-banner-img {
         position: absolute !important;
-        right: 0; top: 0; bottom: 0;
-        width: 50%;
-        height: 100% !important;
+        right: 0; top: 50%; bottom: auto;
+        width: 54%;
+        height: auto !important;
+        aspect-ratio: 16 / 9.6;
+        transform: translateY(-50%);
+        border-radius: 16px;
+        overflow: hidden;
         order: 2
       }
 
       .hero-banner-img img {
         object-fit: cover !important;
-        object-position: 35% center !important;
+        object-position: center center !important;
+        transform: none;
       }
 
       .hero-banner-img::after {
-        background: linear-gradient(to right, #0B1D11 0%, rgba(11,29,17,.7) 30%, transparent 60%) !important
+        background: linear-gradient(to right, #0B1D11 0%, rgba(11,29,17,.5) 18%, transparent 42%) !important
       }
 
       .hero .container { order: 1; position: relative; z-index: 2 }
-      .hero-inner { text-align: left; padding-left: 48px; padding-right: 46%; padding-top: 80px; padding-bottom: 80px }
+      .hero-inner { text-align: left; padding-left: 48px; padding-right: 48%; padding-top: 80px; padding-bottom: 80px }
       .hero-title { font-size: clamp(30px, 4.2vw, 64px); white-space: nowrap }
     }
 
@@ -1830,7 +1835,7 @@
 
     /* ── TESTIMONIALS ── */
     .testi-section { background: var(--navy-mid); padding: 64px 0; }
-    .testi-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-top: 20px; }
+    .testi-scroll { display: flex; gap: 14px; overflow-x: auto; padding: 0 4px 8px 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-top: 20px; }
     .testi-scroll::-webkit-scrollbar { display: none; }
     .testi-card { flex-shrink: 0; width: 240px; background: var(--navy-card); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; overflow: hidden; }
     .testi-img-row { display: flex; height: 130px; }
@@ -1846,6 +1851,13 @@
     .testi-quote { font-size: .74rem; color: rgba(255,255,255,.8); line-height: 1.6; font-style: italic; }
     .testi-name { font-size: .68rem; color: var(--gray); margin-top: 8px; font-weight: 700; }
     .testi-hint { font-size: .65rem; color: rgba(255,255,255,.3); margin-top: 10px; text-align: center; }
+
+    /* 4 equal cards, no scroll/clip, from tablet width up */
+    @media(min-width:1024px) {
+      .testi-scroll { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; padding: 0; }
+      .testi-card { width: 100%; }
+      .testi-hint { display: none; }
+    }
   </style>
 </head>
 
