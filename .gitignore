@@ -3,3 +3,6 @@
 
 # Office lock files
 ~$*
+
+# macOS
+.DS_Store
