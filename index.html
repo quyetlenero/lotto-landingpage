@@ -460,6 +460,17 @@
       border-bottom-color: #D4E8DA
     }
 
+    .section-light .store-more-btn {
+      background: var(--white-card);
+      border: 1.5px solid #C8E0D0;
+      color: var(--gray-dk)
+    }
+
+    .section-light .store-more-btn:hover {
+      border-color: var(--red);
+      color: var(--red)
+    }
+
     .section-light .dealer-search {
       background: var(--white-card);
       border: 1.5px solid #C8E0D0;
@@ -1409,6 +1420,61 @@
       display: flex;
       flex-direction: column;
       gap: 8px
+    }
+
+    /* "Xem thêm" toggle + scrollable list for stores beyond the first 10 */
+    .store-more-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .12);
+      color: var(--gray);
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      padding: 11px;
+      border-radius: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .store-more-btn:hover {
+      border-color: rgba(214, 40, 40, .4);
+      color: #fff
+    }
+
+    .store-more-btn .arrow {
+      transition: transform .3s;
+      font-size: 10px
+    }
+
+    .store-more-btn.open .arrow {
+      transform: rotate(180deg)
+    }
+
+    .store-list-scroll {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease
+    }
+
+    .store-list-scroll.open {
+      max-height: 420px;
+      overflow-y: auto;
+      margin-top: 8px;
+      -webkit-overflow-scrolling: touch
+    }
+
+    .store-list-scroll .district-lbl:first-child {
+      margin-top: 0
+    }
+
+    .store-list-scroll .district-lbl {
+      margin-top: 12px
     }
 
     .store-card {
@@ -2979,23 +3045,9 @@
       return groups;
     }
 
-    // Tạo HTML panel danh sách cửa hàng của 1 tỉnh
-    function buildStorePanel(ten_tinh, stores) {
-      const districts = {};
-      stores.forEach(s => {
-        const d = s.quan_huyen || 'Khác';
-        if (!districts[d]) districts[d] = [];
-        districts[d].push(s);
-      });
-      let html = `<div class="store-panel-hdr">
-    <span>📍</span>
-    <span class="store-panel-title">${ten_tinh}</span>
-    <span class="store-panel-sub">${stores.length} điểm bán</span>
-  </div>`;
-      Object.entries(districts).forEach(([dist, list]) => {
-        html += `<div class="district-lbl">${dist}</div><div class="store-list">`;
-        list.forEach(s => {
-          html += `<div class="store-card">
+    // 1 thẻ cửa hàng
+    function buildStoreCard(s) {
+      return `<div class="store-card">
         <div class="store-ico">🏪</div>
         <div class="store-info">
           <div class="store-name">${s.ten_dai_ly}</div>
@@ -3003,10 +3055,61 @@
         </div>
         <a class="map-btn" href="${s.maps_url || '#'}" target="_blank" rel="noopener">🗺️ Bản đồ</a>
       </div>`;
-        });
-        html += '</div>';
+    }
+
+    // Tạo HTML panel danh sách cửa hàng của 1 tỉnh
+    // Hiện sẵn 10 điểm bán đầu tiên; từ điểm thứ 11 trở đi nằm trong khung
+    // cuộn ẩn/hiện qua nút "Xem thêm", giữ nguyên nhãn quận/huyện.
+    const STORE_VISIBLE_LIMIT = 10;
+    function buildStorePanel(ten_tinh, stores) {
+      const districts = {};
+      stores.forEach(s => {
+        const d = s.quan_huyen || 'Khác';
+        if (!districts[d]) districts[d] = [];
+        districts[d].push(s);
       });
+
+      let visibleHtml = '', hiddenHtml = '', shown = 0, hiddenCount = 0;
+      Object.entries(districts).forEach(([dist, list]) => {
+        const slotsLeft = Math.max(0, STORE_VISIBLE_LIMIT - shown);
+        const visiblePart = list.slice(0, slotsLeft);
+        const hiddenPart = list.slice(slotsLeft);
+
+        if (visiblePart.length) {
+          visibleHtml += `<div class="district-lbl">${dist}</div><div class="store-list">`;
+          visiblePart.forEach(s => { visibleHtml += buildStoreCard(s); });
+          visibleHtml += '</div>';
+          shown += visiblePart.length;
+        }
+        if (hiddenPart.length) {
+          hiddenHtml += `<div class="district-lbl">${dist}</div><div class="store-list">`;
+          hiddenPart.forEach(s => { hiddenHtml += buildStoreCard(s); hiddenCount++; });
+          hiddenHtml += '</div>';
+        }
+      });
+
+      let html = `<div class="store-panel-hdr">
+    <span>📍</span>
+    <span class="store-panel-title">${ten_tinh}</span>
+    <span class="store-panel-sub">${stores.length} điểm bán</span>
+  </div>`;
+      html += visibleHtml;
+      if (hiddenCount > 0) {
+        const moreLabel = `Xem thêm ${hiddenCount} điểm bán`;
+        html += `<button class="store-more-btn" data-label="${moreLabel}" onclick="toggleMoreStores(this)">
+          <span class="label">${moreLabel}</span><span class="arrow">▼</span>
+        </button>
+        <div class="store-list-scroll">${hiddenHtml}</div>`;
+      }
       return html;
+    }
+
+    // Bật/tắt khung cuộn danh sách điểm bán còn lại
+    function toggleMoreStores(btn) {
+      const scroll = btn.nextElementSibling;
+      const isOpen = scroll.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      btn.querySelector('.label').textContent = isOpen ? 'Thu gọn' : btn.dataset.label;
     }
 
     // Render chip tỉnh từ data
