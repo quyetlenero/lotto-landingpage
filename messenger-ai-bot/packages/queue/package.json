@@ -1,0 +1,13 @@
+{
+  "name": "@messenger-bot/queue",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "bullmq": "^5.34.10"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

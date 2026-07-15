@@ -1,0 +1,229 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// One row per business/brand (5 total in the initial rollout).
+model Brand {
+  id                 String   @id @default(uuid())
+  name               String
+  slug               String   @unique
+  systemPrompt       String   @map("system_prompt")
+  claudeModel        String   @default("claude-sonnet-5") @map("claude_model")
+  telegramChatId     String?  @map("telegram_chat_id")
+  notificationEmails String[] @map("notification_emails")
+  // { "tz": "Asia/Ho_Chi_Minh", "windows": [{ "day": "mon", "start": "08:00", "end": "18:00" }, ...] }
+  businessHours      Json     @default("{}") @map("business_hours")
+  isActive           Boolean  @default(true) @map("is_active")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  pages             Page[]
+  knowledgeEntries  KnowledgeEntry[]
+  conversations     Conversation[]
+  leads             Lead[]
+  escalations       Escalation[]
+
+  @@map("brands")
+}
+
+// One Facebook Page maps to exactly one brand.
+model Page {
+  id               String   @id @default(uuid())
+  brandId          String   @map("brand_id")
+  facebookPageId   String   @unique @map("facebook_page_id")
+  // Store encrypted at rest in production (e.g. via pgcrypto or app-level KMS envelope encryption).
+  pageAccessToken  String   @map("page_access_token")
+  pageName         String   @map("page_name")
+  isActive         Boolean  @default(true) @map("is_active")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  brand         Brand          @relation(fields: [brandId], references: [id])
+  conversations Conversation[]
+
+  @@map("pages")
+}
+
+// Brand story / product / FAQ / policy / escalation-rule snippets, compiled into the
+// per-brand system prompt at request time. Editable via the admin UI without a redeploy.
+model KnowledgeEntry {
+  id        String   @id @default(uuid())
+  brandId   String   @map("brand_id")
+  category  String   // brand_story | product | faq | policy | escalation_rule
+  title     String
+  content   String
+  sortOrder Int      @default(0) @map("sort_order")
+  isActive  Boolean  @default(true) @map("is_active")
+  updatedBy String?  @map("updated_by")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  brand Brand @relation(fields: [brandId], references: [id])
+
+  @@index([brandId, category, sortOrder])
+  @@map("knowledge_entries")
+}
+
+enum ConversationStatus {
+  active
+  escalated
+  human_takeover
+  lead_captured
+  closed
+}
+
+// One row per (page, customer PSID) pair.
+model Conversation {
+  id               String              @id @default(uuid())
+  brandId          String              @map("brand_id")
+  pageId           String              @map("page_id")
+  psid             String
+  customerName     String?             @map("customer_name")
+  status           ConversationStatus  @default(active)
+  // While set in the future, the worker skips AI auto-reply so a human replying
+  // manually in Page Inbox doesn't get talked over by the bot.
+  humanMutedUntil  DateTime?           @map("human_muted_until")
+  lastMessageAt    DateTime?           @map("last_message_at")
+  createdAt        DateTime            @default(now()) @map("created_at")
+
+  brand        Brand         @relation(fields: [brandId], references: [id])
+  page         Page          @relation(fields: [pageId], references: [id])
+  messages     Message[]
+  leads        Lead[]
+  escalations  Escalation[]
+
+  @@unique([pageId, psid])
+  @@map("conversations")
+}
+
+enum MessageRole {
+  user
+  assistant
+  tool_result
+}
+
+// Stores the raw Anthropic content-block array (not just plain text) so history can be
+// reconstructed losslessly for the next Claude call, including tool_use/tool_result blocks.
+model Message {
+  id                String      @id @default(uuid())
+  conversationId    String      @map("conversation_id")
+  role              MessageRole
+  content           Json
+  fbMessageId       String?     @map("fb_message_id")
+  claudeMessageId   String?     @map("claude_message_id")
+  receivedAt        DateTime?   @map("received_at")
+  repliedAt         DateTime?   @map("replied_at")
+  latencyMs         Int?        @map("latency_ms")
+  createdAt         DateTime    @default(now()) @map("created_at")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id])
+
+  @@index([conversationId, createdAt])
+  @@map("messages")
+}
+
+enum LeadUrgency {
+  low
+  medium
+  high
+}
+
+enum LeadStatus {
+  new
+  contacted
+  converted
+  dead
+}
+
+// Structured output of the capture_lead tool call.
+model Lead {
+  id               String      @id @default(uuid())
+  conversationId   String      @map("conversation_id")
+  brandId          String      @map("brand_id")
+  phoneNumber      String      @map("phone_number")
+  customerName     String?     @map("customer_name")
+  needSummary      String      @map("need_summary")
+  productInterest  String?     @map("product_interest")
+  urgency          LeadUrgency
+  status           LeadStatus  @default(new)
+  notifiedAt       DateTime?   @map("notified_at")
+  createdAt        DateTime    @default(now()) @map("created_at")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id])
+  brand        Brand        @relation(fields: [brandId], references: [id])
+
+  @@map("leads")
+}
+
+enum EscalationReason {
+  angry_customer
+  explicit_human_request
+  complex_complaint
+  policy_or_refund_dispute
+  other
+}
+
+enum EscalationSeverity {
+  normal
+  urgent
+}
+
+// Structured output of the escalate_to_human tool call.
+model Escalation {
+  id                    String             @id @default(uuid())
+  conversationId        String             @map("conversation_id")
+  brandId               String             @map("brand_id")
+  reason                EscalationReason
+  severity              EscalationSeverity
+  conversationSummary   String             @map("conversation_summary")
+  duringBusinessHours   Boolean            @map("during_business_hours")
+  notifiedChannels      String[]           @default([]) @map("notified_channels")
+  resolved              Boolean            @default(false)
+  createdAt             DateTime           @default(now()) @map("created_at")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id])
+  brand        Brand        @relation(fields: [brandId], references: [id])
+
+  @@map("escalations")
+}
+
+enum NotificationType {
+  lead
+  escalation
+  sla_breach
+}
+
+enum NotificationChannel {
+  telegram
+  email
+}
+
+enum NotificationStatus {
+  sent
+  failed
+}
+
+model NotificationLog {
+  id        String               @id @default(uuid())
+  type      NotificationType
+  refId     String?              @map("ref_id")
+  channel   NotificationChannel
+  status    NotificationStatus
+  error     String?
+  createdAt DateTime             @default(now()) @map("created_at")
+
+  @@map("notification_log")
+}
+
+model AdminUser {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  role         String   @default("admin") // admin | brand_editor
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("admin_users")
+}
