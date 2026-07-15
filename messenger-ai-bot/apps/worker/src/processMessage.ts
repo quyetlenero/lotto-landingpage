@@ -53,7 +53,12 @@ export async function processInboundMessageJob(job: InboundMessageJob): Promise<
     },
   });
 
-  const freshConversation = await prisma.conversation.findUniqueOrThrow({ where: { id: conversation.id } });
+  // lastMessageAt drives the idle-conversation scan in apps/worker/src/insightExtraction.ts —
+  // update it on every customer message, not just tool-triggered writes below.
+  const freshConversation = await prisma.conversation.update({
+    where: { id: conversation.id },
+    data: { lastMessageAt: receivedAt },
+  });
   if (freshConversation.humanMutedUntil && freshConversation.humanMutedUntil > new Date()) {
     // A human is actively handling this thread via Page Inbox — stay quiet so the bot
     // doesn't talk over them.
@@ -179,6 +184,7 @@ async function handleEcho(job: InboundMessageJob, conversationId: string): Promi
     data: {
       status: ConversationStatus.human_takeover,
       humanMutedUntil: new Date(Date.now() + HUMAN_MUTE_MINUTES * 60_000),
+      lastMessageAt: new Date(job.timestamp),
     },
   });
 }

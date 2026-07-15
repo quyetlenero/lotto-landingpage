@@ -13,7 +13,9 @@
     "db:generate": "npm run generate --workspace packages/db",
     "db:migrate": "npm run migrate --workspace packages/db",
     "db:seed": "tsx scripts/seed.ts",
-    "sla:monitor": "npm run sla --workspace apps/worker"
+    "sla:monitor": "npm run sla --workspace apps/worker",
+    "insights:extract": "npm run insights:extract --workspace apps/worker",
+    "insights:report": "npm run insights:report --workspace apps/worker"
   },
   "devDependencies": {
     "tsx": "^4.19.2",

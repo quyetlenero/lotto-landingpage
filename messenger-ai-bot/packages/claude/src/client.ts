@@ -1,4 +1,5 @@
-import Anthropic from "@anthropic-ai/sdk";
+import type Anthropic from "@anthropic-ai/sdk";
+import { getAnthropicClient } from "./anthropicClient.js";
 import { MESSENGER_TOOLS } from "./tools.js";
 
 export interface ReplyRequest {
@@ -16,15 +17,6 @@ export interface ReplyResult {
   usedFallback: boolean;
 }
 
-let client: Anthropic | undefined;
-
-function getClient(): Anthropic {
-  if (!client) {
-    client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-  }
-  return client;
-}
-
 /**
  * Calls Claude for one Messenger turn. Disables extended thinking and caps max_tokens —
  * this is a latency-sensitive chat reply, not a reasoning task. Falls back to a faster/
@@ -32,7 +24,7 @@ function getClient(): Anthropic {
  * worker's caller is responsible for a final canned-reply fallback if both attempts fail.
  */
 export async function generateReply(req: ReplyRequest): Promise<ReplyResult> {
-  const anthropic = getClient();
+  const anthropic = getAnthropicClient();
 
   const request = (model: string): Promise<Anthropic.Message> =>
     anthropic.messages.create(

@@ -22,25 +22,27 @@ model Brand {
   createdAt          DateTime @default(now()) @map("created_at")
   updatedAt          DateTime @updatedAt @map("updated_at")
 
-  pages             Page[]
-  knowledgeEntries  KnowledgeEntry[]
-  conversations     Conversation[]
-  leads             Lead[]
-  escalations       Escalation[]
+  pages                Page[]
+  knowledgeEntries     KnowledgeEntry[]
+  conversations        Conversation[]
+  leads                Lead[]
+  escalations          Escalation[]
+  conversationInsights ConversationInsight[]
+  insightReports       InsightReport[]
 
   @@map("brands")
 }
 
 // One Facebook Page maps to exactly one brand.
 model Page {
-  id               String   @id @default(uuid())
-  brandId          String   @map("brand_id")
-  facebookPageId   String   @unique @map("facebook_page_id")
+  id              String   @id @default(uuid())
+  brandId         String   @map("brand_id")
+  facebookPageId  String   @unique @map("facebook_page_id")
   // Store encrypted at rest in production (e.g. via pgcrypto or app-level KMS envelope encryption).
-  pageAccessToken  String   @map("page_access_token")
-  pageName         String   @map("page_name")
-  isActive         Boolean  @default(true) @map("is_active")
-  createdAt        DateTime @default(now()) @map("created_at")
+  pageAccessToken String   @map("page_access_token")
+  pageName        String   @map("page_name")
+  isActive        Boolean  @default(true) @map("is_active")
+  createdAt       DateTime @default(now()) @map("created_at")
 
   brand         Brand          @relation(fields: [brandId], references: [id])
   conversations Conversation[]
@@ -53,7 +55,7 @@ model Page {
 model KnowledgeEntry {
   id        String   @id @default(uuid())
   brandId   String   @map("brand_id")
-  category  String   // brand_story | product | faq | policy | escalation_rule
+  category  String // brand_story | product | faq | policy | escalation_rule
   title     String
   content   String
   sortOrder Int      @default(0) @map("sort_order")
@@ -77,23 +79,24 @@ enum ConversationStatus {
 
 // One row per (page, customer PSID) pair.
 model Conversation {
-  id               String              @id @default(uuid())
-  brandId          String              @map("brand_id")
-  pageId           String              @map("page_id")
-  psid             String
-  customerName     String?             @map("customer_name")
-  status           ConversationStatus  @default(active)
+  id              String             @id @default(uuid())
+  brandId         String             @map("brand_id")
+  pageId          String             @map("page_id")
+  psid            String
+  customerName    String?            @map("customer_name")
+  status          ConversationStatus @default(active)
   // While set in the future, the worker skips AI auto-reply so a human replying
   // manually in Page Inbox doesn't get talked over by the bot.
-  humanMutedUntil  DateTime?           @map("human_muted_until")
-  lastMessageAt    DateTime?           @map("last_message_at")
-  createdAt        DateTime            @default(now()) @map("created_at")
+  humanMutedUntil DateTime?          @map("human_muted_until")
+  lastMessageAt   DateTime?          @map("last_message_at")
+  createdAt       DateTime           @default(now()) @map("created_at")
 
-  brand        Brand         @relation(fields: [brandId], references: [id])
-  page         Page          @relation(fields: [pageId], references: [id])
-  messages     Message[]
-  leads        Lead[]
-  escalations  Escalation[]
+  brand       Brand                 @relation(fields: [brandId], references: [id])
+  page        Page                  @relation(fields: [pageId], references: [id])
+  messages    Message[]
+  leads       Lead[]
+  escalations Escalation[]
+  insights    ConversationInsight[]
 
   @@unique([pageId, psid])
   @@map("conversations")
@@ -108,16 +111,16 @@ enum MessageRole {
 // Stores the raw Anthropic content-block array (not just plain text) so history can be
 // reconstructed losslessly for the next Claude call, including tool_use/tool_result blocks.
 model Message {
-  id                String      @id @default(uuid())
-  conversationId    String      @map("conversation_id")
-  role              MessageRole
-  content           Json
-  fbMessageId       String?     @map("fb_message_id")
-  claudeMessageId   String?     @map("claude_message_id")
-  receivedAt        DateTime?   @map("received_at")
-  repliedAt         DateTime?   @map("replied_at")
-  latencyMs         Int?        @map("latency_ms")
-  createdAt         DateTime    @default(now()) @map("created_at")
+  id              String      @id @default(uuid())
+  conversationId  String      @map("conversation_id")
+  role            MessageRole
+  content         Json
+  fbMessageId     String?     @map("fb_message_id")
+  claudeMessageId String?     @map("claude_message_id")
+  receivedAt      DateTime?   @map("received_at")
+  repliedAt       DateTime?   @map("replied_at")
+  latencyMs       Int?        @map("latency_ms")
+  createdAt       DateTime    @default(now()) @map("created_at")
 
   conversation Conversation @relation(fields: [conversationId], references: [id])
 
@@ -140,17 +143,17 @@ enum LeadStatus {
 
 // Structured output of the capture_lead tool call.
 model Lead {
-  id               String      @id @default(uuid())
-  conversationId   String      @map("conversation_id")
-  brandId          String      @map("brand_id")
-  phoneNumber      String      @map("phone_number")
-  customerName     String?     @map("customer_name")
-  needSummary      String      @map("need_summary")
-  productInterest  String?     @map("product_interest")
-  urgency          LeadUrgency
-  status           LeadStatus  @default(new)
-  notifiedAt       DateTime?   @map("notified_at")
-  createdAt        DateTime    @default(now()) @map("created_at")
+  id              String      @id @default(uuid())
+  conversationId  String      @map("conversation_id")
+  brandId         String      @map("brand_id")
+  phoneNumber     String      @map("phone_number")
+  customerName    String?     @map("customer_name")
+  needSummary     String      @map("need_summary")
+  productInterest String?     @map("product_interest")
+  urgency         LeadUrgency
+  status          LeadStatus  @default(new)
+  notifiedAt      DateTime?   @map("notified_at")
+  createdAt       DateTime    @default(now()) @map("created_at")
 
   conversation Conversation @relation(fields: [conversationId], references: [id])
   brand        Brand        @relation(fields: [brandId], references: [id])
@@ -173,16 +176,16 @@ enum EscalationSeverity {
 
 // Structured output of the escalate_to_human tool call.
 model Escalation {
-  id                    String             @id @default(uuid())
-  conversationId        String             @map("conversation_id")
-  brandId               String             @map("brand_id")
-  reason                EscalationReason
-  severity              EscalationSeverity
-  conversationSummary   String             @map("conversation_summary")
-  duringBusinessHours   Boolean            @map("during_business_hours")
-  notifiedChannels      String[]           @default([]) @map("notified_channels")
-  resolved              Boolean            @default(false)
-  createdAt             DateTime           @default(now()) @map("created_at")
+  id                  String             @id @default(uuid())
+  conversationId      String             @map("conversation_id")
+  brandId             String             @map("brand_id")
+  reason              EscalationReason
+  severity            EscalationSeverity
+  conversationSummary String             @map("conversation_summary")
+  duringBusinessHours Boolean            @map("during_business_hours")
+  notifiedChannels    String[]           @default([]) @map("notified_channels")
+  resolved            Boolean            @default(false)
+  createdAt           DateTime           @default(now()) @map("created_at")
 
   conversation Conversation @relation(fields: [conversationId], references: [id])
   brand        Brand        @relation(fields: [brandId], references: [id])
@@ -207,13 +210,13 @@ enum NotificationStatus {
 }
 
 model NotificationLog {
-  id        String               @id @default(uuid())
+  id        String              @id @default(uuid())
   type      NotificationType
-  refId     String?              @map("ref_id")
+  refId     String?             @map("ref_id")
   channel   NotificationChannel
   status    NotificationStatus
   error     String?
-  createdAt DateTime             @default(now()) @map("created_at")
+  createdAt DateTime            @default(now()) @map("created_at")
 
   @@map("notification_log")
 }
@@ -226,4 +229,73 @@ model AdminUser {
   createdAt    DateTime @default(now()) @map("created_at")
 
   @@map("admin_users")
+}
+
+enum InsightSentiment {
+  positive
+  neutral
+  negative
+  frustrated
+}
+
+enum PurchaseIntent {
+  low
+  medium
+  high
+}
+
+// Distilled customer-insight snapshot for one conversation, generated once it goes idle
+// (see apps/worker/src/insightExtraction.ts). Not unique per conversation — a returning
+// customer's next idle period produces a new row, so trend/weekly aggregation just filters
+// by extractedAt without needing to reason about conversation status.
+model ConversationInsight {
+  id               String           @id @default(uuid())
+  conversationId   String           @map("conversation_id")
+  brandId          String           @map("brand_id")
+  personaSummary   String           @map("persona_summary")
+  ageRangeGuess    String?          @map("age_range_guess")
+  genderGuess      String?          @map("gender_guess")
+  locationGuess    String?          @map("location_guess")
+  needs            String[]
+  painPoints       String[]         @map("pain_points")
+  objections       String[]
+  productInterests String[]         @map("product_interests")
+  sentiment        InsightSentiment
+  purchaseIntent   PurchaseIntent   @map("purchase_intent")
+  dropOffReason    String?          @map("drop_off_reason")
+  // Representative verbatim quotes — must be anonymized (no phone numbers/real names),
+  // enforced via the extraction prompt in packages/claude/src/insightExtraction.ts.
+  quoteHighlights  String[]         @map("quote_highlights")
+  extractedAt      DateTime         @default(now()) @map("extracted_at")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id])
+  brand        Brand        @relation(fields: [brandId], references: [id])
+
+  @@index([brandId, extractedAt])
+  @@index([conversationId, extractedAt])
+  @@map("conversation_insights")
+}
+
+// One row per brand per reporting period (weekly by default), synthesized from that
+// period's ConversationInsight rows — see apps/worker/src/generateWeeklyReport.ts.
+model InsightReport {
+  id                       String   @id @default(uuid())
+  brandId                  String   @map("brand_id")
+  periodStart              DateTime @map("period_start")
+  periodEnd                DateTime @map("period_end")
+  conversationsAnalyzed    Int      @map("conversations_analyzed")
+  personaSummary           String   @map("persona_summary")
+  // [{ need, frequency, exampleQuote }]
+  topNeeds                 Json     @map("top_needs")
+  // [{ painPoint, frequency, exampleQuote }]
+  topPainPoints            Json     @map("top_pain_points")
+  // [{ segmentName, ageRange, gender, locationHints, interestKeywords, painPointsToAddress, messagingAngle, creativeIdeas }]
+  targetingRecommendations Json     @map("targeting_recommendations")
+  rawReportMarkdown        String   @map("raw_report_markdown")
+  createdAt                DateTime @default(now()) @map("created_at")
+
+  brand Brand @relation(fields: [brandId], references: [id])
+
+  @@index([brandId, periodStart])
+  @@map("insight_reports")
 }

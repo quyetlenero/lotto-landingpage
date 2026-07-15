@@ -26,9 +26,12 @@ Facebook Messenger → apps/webhook (Fastify, ack <300ms) → Redis queue (BullM
   `escalate_to_human` tool calls, replies via the Send API, persists everything, fires
   notifications.
 - `packages/db` — Prisma schema (`brands`, `pages`, `knowledge_entries`, `conversations`,
-  `messages`, `leads`, `escalations`, `notification_log`, `admin_users`).
+  `messages`, `leads`, `escalations`, `notification_log`, `admin_users`,
+  `conversation_insights`, `insight_reports`).
 - `packages/claude` — tool definitions, per-brand system-prompt compiler, Claude client
-  wrapper (thinking disabled, timeout + fallback model).
+  wrapper (thinking disabled, timeout + fallback model), plus separate insight-extraction
+  and report-generation Claude calls (own tool definitions, not part of the chat-reply
+  system prompt/cache).
 - `packages/queue` — shared BullMQ queue name/connection used by both webhook and worker.
 
 There is intentionally no custom admin UI in this scaffold — point **Directus** or **Retool**
@@ -102,6 +105,37 @@ integration needed), the webhook receives an "echo" event. The worker detects it
 the bot's own sent messages and sets `conversations.human_muted_until = now() + 60 minutes`,
 during which the bot stays silent on that conversation. Revisit Facebook's full Handover
 Protocol later if this rolling mute window isn't precise enough for the sales workflow.
+
+## Customer insight analytics & ad-targeting reports
+
+Two more one-shot scripts, same pattern as the SLA monitor — meant to be triggered by an
+external scheduler, not run as long-lived processes:
+
+```bash
+npm run insights:extract   # hourly cron recommended
+npm run insights:report    # weekly cron recommended (e.g. Monday 06:00)
+```
+
+- **`insights:extract`** finds conversations idle for `CONVERSATION_IDLE_HOURS` (default 6)
+  and makes one Claude tool-use call per conversation to distill it into a
+  `conversation_insights` row: persona guess, needs, pain points, objections, sentiment,
+  purchase intent, and a few anonymized representative quotes (never phone numbers/real
+  names). Safe to re-run on a schedule — a conversation is only re-analyzed once new activity
+  happens after its last insight snapshot, so no lookback window is needed, just a per-run
+  batch limit (`INSIGHT_EXTRACTION_BATCH_LIMIT`).
+- **`insights:report`** aggregates each active brand's `conversation_insights` from the past
+  `REPORT_PERIOD_DAYS` (default 7) in plain JS — no Claude call needed just to tally
+  frequencies — then makes exactly **one** Claude call per brand to turn those aggregated
+  stats into a `insight_reports` row: a persona/segment summary, ranked needs and pain
+  points, and ad-targeting recommendations using only parameters Meta Ads Manager actually
+  exposes (age range, gender, location, interest keywords) plus messaging/creative guidance.
+  Brands with zero insights that period are skipped (no empty reports).
+
+Both tables are read-only from the app's perspective — view them the same way as `leads`/
+`conversations`, by pointing Directus/Retool at the Postgres database. There's no separate
+notification for reports (unlike leads/escalations); check the admin UI weekly, or wire up
+`dispatchNotification` (`apps/worker/src/notify/dispatch.ts`) the same way leads/escalations
+do if you'd rather have a Telegram/email summary pushed automatically.
 
 ## Extending to all 5 brands
 

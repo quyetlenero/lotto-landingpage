@@ -7,7 +7,9 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "sla": "tsx src/slaMonitor.ts"
+    "sla": "tsx src/slaMonitor.ts",
+    "insights:extract": "tsx src/insightExtraction.ts",
+    "insights:report": "tsx src/generateWeeklyReport.ts"
   },
   "dependencies": {
     "@messenger-bot/claude": "*",
