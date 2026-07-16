@@ -14,6 +14,10 @@ model Brand {
   slug               String   @unique
   systemPrompt       String   @map("system_prompt")
   claudeModel        String   @default("claude-sonnet-5") @map("claude_model")
+  // Public, non-secret identifier (like a Stripe publishable key) embedded in the website
+  // widget script tag to identify this brand — not an auth boundary on its own, see
+  // apps/webhook/src/routes/website.ts for the origin allowlist + rate limiting that are.
+  widgetKey          String   @unique @default(cuid()) @map("widget_key")
   telegramChatId     String?  @map("telegram_chat_id")
   notificationEmails String[] @map("notification_emails")
   // { "tz": "Asia/Ho_Chi_Minh", "windows": [{ "day": "mon", "start": "08:00", "end": "18:00" }, ...] }
@@ -33,16 +37,29 @@ model Brand {
   @@map("brands")
 }
 
-// One Facebook Page maps to exactly one brand.
+enum PageChannel {
+  facebook
+  web
+}
+
+// One row per messaging channel a brand is reachable on: a real Facebook Page for the
+// `facebook` channel, or one synthetic row per brand for the `web` channel (created lazily
+// by apps/webhook/src/routes/website.ts, facebookPageId = "web:<brand-slug>", pageAccessToken
+// unused) — reusing this model for both keeps Conversation's existing @@unique([pageId, psid])
+// and upsert logic working unchanged for the website chat widget instead of needing a
+// separate uniqueness scheme (see plan notes on the Postgres NULL-uniqueness pitfall of a
+// nullable pageId).
 model Page {
-  id              String   @id @default(uuid())
-  brandId         String   @map("brand_id")
-  facebookPageId  String   @unique @map("facebook_page_id")
+  id              String      @id @default(uuid())
+  brandId         String      @map("brand_id")
+  channel         PageChannel @default(facebook)
+  facebookPageId  String      @unique @map("facebook_page_id")
   // Store encrypted at rest in production (e.g. via pgcrypto or app-level KMS envelope encryption).
-  pageAccessToken String   @map("page_access_token")
-  pageName        String   @map("page_name")
-  isActive        Boolean  @default(true) @map("is_active")
-  createdAt       DateTime @default(now()) @map("created_at")
+  // Unused for channel = web.
+  pageAccessToken String      @map("page_access_token")
+  pageName        String      @map("page_name")
+  isActive        Boolean     @default(true) @map("is_active")
+  createdAt       DateTime    @default(now()) @map("created_at")
 
   brand         Brand          @relation(fields: [brandId], references: [id])
   conversations Conversation[]
@@ -115,6 +132,8 @@ model Message {
   conversationId  String      @map("conversation_id")
   role            MessageRole
   content         Json
+  // Facebook mid for messenger-channel messages; always null for website-channel messages
+  // (no equivalent external message id — see packages/conversation-core/src/runAiTurn.ts).
   fbMessageId     String?     @map("fb_message_id")
   claudeMessageId String?     @map("claude_message_id")
   receivedAt      DateTime?   @map("received_at")

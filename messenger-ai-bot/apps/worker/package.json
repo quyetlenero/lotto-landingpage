@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@messenger-bot/claude": "*",
+    "@messenger-bot/conversation-core": "*",
     "@messenger-bot/db": "*",
     "@messenger-bot/queue": "*",
     "bullmq": "^5.34.10"

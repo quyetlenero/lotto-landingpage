@@ -74,6 +74,10 @@ async function main(): Promise<void> {
   });
 
   console.log(`Seeded brand "${brand.name}" (${brand.id})`);
+  console.log(
+    `Website widget key: ${brand.widgetKey} — use as data-widget-key on the <script> tag, ` +
+      `or in curl tests against POST /chat/website.`,
+  );
 }
 
 main()

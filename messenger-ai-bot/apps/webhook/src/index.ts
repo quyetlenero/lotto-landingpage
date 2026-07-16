@@ -1,10 +1,16 @@
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 import Fastify from "fastify";
+import fastifyStatic from "@fastify/static";
 import { registerFacebookWebhookRoutes } from "./routes/facebook.js";
+import { registerWebsiteChatRoutes } from "./routes/website.js";
 
 const app = Fastify({ logger: true });
 
 // Capture the raw request body so verifyFacebookSignature can HMAC the exact bytes Facebook
 // signed — re-serializing the parsed JSON would not reliably match the original signature.
+// Still hands Fastify a normally-parsed request.body for every other route (including
+// /chat/website), so no changes are needed here for the website route to work.
 app.addContentTypeParser("application/json", { parseAs: "buffer" }, (req, body, done) => {
   (req as { rawBody?: Buffer }).rawBody = body as Buffer;
   try {
@@ -15,6 +21,12 @@ app.addContentTypeParser("application/json", { parseAs: "buffer" }, (req, body, 
 });
 
 registerFacebookWebhookRoutes(app);
+registerWebsiteChatRoutes(app);
+
+// Serves apps/webhook/public/widget.js at GET /widget.js — keeps the embeddable widget
+// version-locked to the same deploy as the API it calls, no separate static host needed.
+const publicDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "public");
+app.register(fastifyStatic, { root: publicDir });
 
 app.get("/healthz", async () => ({ ok: true }));
 

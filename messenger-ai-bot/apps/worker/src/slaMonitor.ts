@@ -1,5 +1,5 @@
 import { getPrismaClient } from "@messenger-bot/db";
-import { sendTelegramMessage } from "./notify/telegram.js";
+import { sendTelegramMessage } from "@messenger-bot/conversation-core";
 
 const SLA_THRESHOLD_SECONDS = Number(process.env.SLA_THRESHOLD_SECONDS ?? 60);
 // How far back to look for candidate breaches each run — bounds the query, doesn't affect
