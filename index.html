@@ -3047,7 +3047,9 @@
       const groups = {};
       rows.forEach(r => {
         if (!r.ten_tinh) return;
-        const key = r.tinh || slugProvince(r.ten_tinh); // không phụ thuộc cột "tinh"
+        // Không phụ thuộc cột "tinh"; chuẩn hóa chữ thường để "Hanoi" và
+        // "hanoi" không bị tách thành hai tỉnh.
+        const key = (r.tinh || slugProvince(r.ten_tinh)).trim().toLowerCase();
         if (!key) return;
         if (!groups[key]) groups[key] = { ten_tinh: r.ten_tinh, stores: [] };
         groups[key].stores.push(r);
