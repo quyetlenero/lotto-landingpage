@@ -3034,13 +3034,23 @@
       return res;
     }
 
+    // Tạo mã tỉnh không dấu từ tên tỉnh — dùng khi cột "tinh" trong Sheet bị
+    // thiếu hoặc tiêu đề cột bị gõ đè nhầm.
+    function slugProvince(name) {
+      return (name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd').replace(/Đ/g, 'd')
+        .toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
     // Nhóm đại lý theo tỉnh
     function groupByProvince(rows) {
       const groups = {};
       rows.forEach(r => {
-        if (!r.tinh || !r.ten_tinh) return;
-        if (!groups[r.tinh]) groups[r.tinh] = { ten_tinh: r.ten_tinh, stores: [] };
-        groups[r.tinh].stores.push(r);
+        if (!r.ten_tinh) return;
+        const key = r.tinh || slugProvince(r.ten_tinh); // không phụ thuộc cột "tinh"
+        if (!key) return;
+        if (!groups[key]) groups[key] = { ten_tinh: r.ten_tinh, stores: [] };
+        groups[key].stores.push(r);
       });
       return groups;
     }
@@ -3192,7 +3202,11 @@
         const csv = await res.text();
         const rows = parseCSV(csv);
         if (!rows.length) throw new Error('No data');
-        _dealerData = groupByProvince(rows);
+        const groups = groupByProvince(rows);
+        // Sheet có dòng nhưng không nhóm được tỉnh nào (VD: tiêu đề cột bị đổi/xóa)
+        // → dùng dữ liệu dự phòng thay vì để trống section đại lý.
+        if (!Object.keys(groups).length) throw new Error('Không đọc được cột tỉnh (kiểm tra hàng tiêu đề của Sheet)');
+        _dealerData = groups;
         renderChips(_dealerData);
       } catch (e) {
         console.warn('Sheets không tải được, dùng dữ liệu dự phòng:', e.message);
