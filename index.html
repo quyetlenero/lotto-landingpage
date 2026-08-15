@@ -2010,22 +2010,22 @@
       <p class="cd-label">⏰ Ưu đãi kết thúc sau</p>
       <div class="cd-timer">
         <div class="cd-block">
-          <div class="cd-num" id="cd-d">29</div>
+          <div class="cd-num" id="cd-d">--</div>
           <div class="cd-unit">Ngày</div>
         </div>
         <div class="cd-sep">:</div>
         <div class="cd-block">
-          <div class="cd-num" id="cd-h">00</div>
+          <div class="cd-num" id="cd-h">--</div>
           <div class="cd-unit">Giờ</div>
         </div>
         <div class="cd-sep">:</div>
         <div class="cd-block">
-          <div class="cd-num" id="cd-m">00</div>
+          <div class="cd-num" id="cd-m">--</div>
           <div class="cd-unit">Phút</div>
         </div>
         <div class="cd-sep">:</div>
         <div class="cd-block">
-          <div class="cd-num" id="cd-s">00</div>
+          <div class="cd-num" id="cd-s">--</div>
           <div class="cd-unit">Giây</div>
         </div>
       </div>
@@ -2879,8 +2879,9 @@
       document.querySelector(sel)?.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Countdown (target: 2026-08-05 23:59:59)
-    const endDate = new Date('2026-08-05T23:59:59+07:00');
+    // Countdown (target: 2026-09-30 23:59:59) — phải khớp với mốc ghi ở thẻ
+    // hero, meta description và câu trả lời FAQ.
+    const endDate = new Date('2026-09-30T23:59:59+07:00');
     function tick() {
       const diff = Math.max(0, endDate - new Date());
       const d = Math.floor(diff / 86400000);
