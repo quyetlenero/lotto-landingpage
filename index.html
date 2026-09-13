@@ -3277,7 +3277,14 @@
     // Dán URL Web App của Google Apps Script (xem hướng dẫn deploy
     // trong file HUONG_DAN_TEAM.md, mục "Nhận dữ liệu form đăng ký")
     // ═══════════════════════════════════════════════════════════
-    const FORM_ENDPOINT = 'https://script.google.com/a/macros/nero.com.vn/s/AKfycbyqRETr3oBTen5CSVXJ3M4JPVA9t9Rrl90qyR1aolhX4Zg8JVEwOZhPCwuoPh-jWUXe/exec';
+    // ĐỔI 13/09/2026. Endpoint cũ (…/a/macros/nero.com.vn/s/AKfycbyqRETr…) trả HTTP 403
+    // "Bạn cần có quyền truy cập" với MỌI người gọi ẩn danh — tức mọi khách vào từ Internet —
+    // nên form đăng ký đã chết mà không ai hay: trang vẫn hiện bình thường, không lỗi nào đỏ.
+    // Nguyên nhân: web app mất uỷ quyền OAuth, đúng kiểu hỏng đã giết sổ bán hàng ngày 30/08.
+    // Đường dưới đây là bản triển khai công khai ("Bất kỳ ai"), đã cấp lại quyền và thử ẩn danh
+    // thành công ngày 13/09. Đổi endpoint thì phải thử lại bằng một lượt gửi ẩn danh, đừng tin
+    // vào việc trang không báo lỗi.
+    const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzkzVs25w3hYfpWDItAg29jLiSqHTU-hwYBIJogIo5wr4Qp8GOBkoAGEJCxMmG-3r1d/exec';
 
     function submitForm(e) {
       e.preventDefault();
